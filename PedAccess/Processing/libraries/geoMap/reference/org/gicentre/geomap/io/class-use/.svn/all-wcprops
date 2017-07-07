@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use
+END
+NumberParser.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use/NumberParser.html
+END
+DbaseFileReader.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use/DbaseFileReader.html
+END
+DbaseFileWriter.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use/DbaseFileWriter.html
+END
+DbaseFileReader.Row.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use/DbaseFileReader.Row.html
+END
+ShapefileReader.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use/ShapefileReader.html
+END
+ShapefileWriter.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use/ShapefileWriter.html
+END
+DbaseFileHeader.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use/DbaseFileHeader.html
+END
+DbaseFileWriter.FieldFormatter.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/95/trunk/GeoMap/reference/org/gicentre/geomap/io/class-use/DbaseFileWriter.FieldFormatter.html
+END

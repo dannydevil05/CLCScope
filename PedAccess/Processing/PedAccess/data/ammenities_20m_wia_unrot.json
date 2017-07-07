@@ -1,0 +1,32 @@
+[
+  {
+    "v": 59,
+    "u": 49,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 31,
+    "u": 28,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 73,
+    "u": 12,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 1,
+    "u": 12,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 47,
+    "u": 12,
+    "subtype": "retail",
+    "type": "amenity"
+  }
+]

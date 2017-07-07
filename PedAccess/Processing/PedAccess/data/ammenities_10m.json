@@ -1,0 +1,608 @@
+[
+  {
+    "v": 55,
+    "u": 206,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": -8,
+    "u": 0,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": -8,
+    "u": 0,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": -8,
+    "u": 0,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 115,
+    "u": 150,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 229,
+    "u": 183,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 194,
+    "u": 172,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 236,
+    "u": 210,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 203,
+    "u": 210,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 78,
+    "u": 119,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 242,
+    "u": 268,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 262,
+    "u": 195,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 87,
+    "u": 150,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 230,
+    "u": 259,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 199,
+    "u": 136,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 189,
+    "u": 207,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 229,
+    "u": 183,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 116,
+    "u": 75,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 230,
+    "u": 259,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 55,
+    "u": 93,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 168,
+    "u": 148,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 289,
+    "u": 111,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 241,
+    "u": 220,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 127,
+    "u": 119,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 213,
+    "u": 197,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 120,
+    "u": 147,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 84,
+    "u": 187,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 149,
+    "u": 169,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 308,
+    "u": 128,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 36,
+    "u": 146,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 272,
+    "u": 232,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 122,
+    "u": 84,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 99,
+    "u": 128,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 61,
+    "u": 134,
+    "subtype": "child_care",
+    "type": "amenity"
+  },
+  {
+    "v": 168,
+    "u": 148,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 112,
+    "u": 58,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 68,
+    "u": 82,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 49,
+    "u": 69,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 57,
+    "u": 98,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 141,
+    "u": 91,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 103,
+    "u": 141,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 32,
+    "u": 137,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 104,
+    "u": 101,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 172,
+    "u": 114,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 164,
+    "u": 119,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 302,
+    "u": 99,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 302,
+    "u": 99,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 302,
+    "u": 99,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 75,
+    "u": 109,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 86,
+    "u": 172,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 103,
+    "u": 85,
+    "subtype": "eldercare",
+    "type": "amenity"
+  },
+  {
+    "v": 31,
+    "u": 156,
+    "subtype": "eldercare",
+    "type": "amenity"
+  },
+  {
+    "v": 311,
+    "u": 202,
+    "subtype": "eldercare",
+    "type": "amenity"
+  },
+  {
+    "v": 118,
+    "u": 104,
+    "subtype": "eldercare",
+    "type": "amenity"
+  },
+  {
+    "v": 64,
+    "u": 92,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 316,
+    "u": 148,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 184,
+    "u": 190,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 176,
+    "u": 178,
+    "subtype": "health",
+    "type": "amenity"
+  },
+  {
+    "v": 197,
+    "u": 109,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 88,
+    "u": 81,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 68,
+    "u": 114,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 120,
+    "u": 147,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 306,
+    "u": 187,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 312,
+    "u": 184,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 320,
+    "u": 117,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 41,
+    "u": 149,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 126,
+    "u": 191,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 307,
+    "u": 98,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 151,
+    "u": 100,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 112,
+    "u": 134,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 182,
+    "u": 109,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 178,
+    "u": 154,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 167,
+    "u": 149,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 160,
+    "u": 193,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 179,
+    "u": 119,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 195,
+    "u": 171,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 189,
+    "u": 208,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 275,
+    "u": 112,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 172,
+    "u": 111,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 149,
+    "u": 169,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 199,
+    "u": 136,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 171,
+    "u": 103,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 171,
+    "u": 103,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 172,
+    "u": 111,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 172,
+    "u": 111,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 172,
+    "u": 111,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 172,
+    "u": 111,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 163,
+    "u": 119,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 149,
+    "u": 169,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 171,
+    "u": 103,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 149,
+    "u": 169,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 62,
+    "u": 229,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 199,
+    "u": 136,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 311,
+    "u": 186,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 306,
+    "u": 186,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 112,
+    "u": 135,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 87,
+    "u": 103,
+    "subtype": "retail",
+    "type": "amenity"
+  },
+  {
+    "v": 142,
+    "u": 74,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 99,
+    "u": 112,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 63,
+    "u": 146,
+    "subtype": "school",
+    "type": "amenity"
+  },
+  {
+    "v": 73,
+    "u": 128,
+    "subtype": "school",
+    "type": "amenity"
+  }
+]

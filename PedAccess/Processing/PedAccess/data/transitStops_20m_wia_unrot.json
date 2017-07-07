@@ -1,0 +1,452 @@
+[
+  {
+    "v": 21,
+    "u": 0,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 9,
+    "u": 23,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 29,
+    "u": 11,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 79,
+    "u": 73,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 62,
+    "u": 41,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 32,
+    "u": 38,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 76,
+    "u": 59,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 54,
+    "u": 40,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 57,
+    "u": 62,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 46,
+    "u": 36,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 22,
+    "u": 0,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 18,
+    "u": 67,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 40,
+    "u": 2,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 21,
+    "u": 58,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 75,
+    "u": 45,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 39,
+    "u": 36,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 16,
+    "u": 30,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 23,
+    "u": 74,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 22,
+    "u": 36,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 81,
+    "u": 3,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 85,
+    "u": 60,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 45,
+    "u": 7,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 66,
+    "u": 36,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 61,
+    "u": 21,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 83,
+    "u": 32,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 38,
+    "u": 64,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 22,
+    "u": 36,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 47,
+    "u": 34,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 64,
+    "u": 62,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 39,
+    "u": 43,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 72,
+    "u": 65,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 20,
+    "u": 56,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 76,
+    "u": 45,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 68,
+    "u": 36,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 45,
+    "u": 27,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 31,
+    "u": 13,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 36,
+    "u": 19,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 69,
+    "u": 48,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 8,
+    "u": 20,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 61,
+    "u": 29,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 56,
+    "u": 19,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 22,
+    "u": 15,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 55,
+    "u": 18,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 79,
+    "u": 4,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 32,
+    "u": 39,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 23,
+    "u": 14,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 16,
+    "u": 75,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 88,
+    "u": 29,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 71,
+    "u": 13,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 18,
+    "u": 9,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 39,
+    "u": 0,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 69,
+    "u": 13,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 84,
+    "u": 44,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 43,
+    "u": 50,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 61,
+    "u": 22,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 18,
+    "u": 8,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 46,
+    "u": 9,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 81,
+    "u": 51,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 86,
+    "u": 61,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 36,
+    "u": 44,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 45,
+    "u": 27,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 4,
+    "u": 29,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 39,
+    "u": 37,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 0,
+    "u": 12,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 37,
+    "u": 74,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 61,
+    "u": 30,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 55,
+    "u": 73,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 80,
+    "u": 73,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 17,
+    "u": 30,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 3,
+    "u": 16,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 36,
+    "u": 18,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 88,
+    "u": 55,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": -2,
+    "u": 10,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 81,
+    "u": 56,
+    "subtype": "bus_stop",
+    "type": "transit"
+  },
+  {
+    "v": 37,
+    "u": 45,
+    "subtype": "mrt",
+    "type": "transit"
+  }
+]
