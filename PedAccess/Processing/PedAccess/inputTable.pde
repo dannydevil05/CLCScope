@@ -337,6 +337,7 @@ void decodePieces() {
         int b1=0;
         int commercial=0;
         int residential=0;
+        int park=0;
         if (ID >= 0 && ID <= 6 || ID == 9) {
           
            switch (ID) {
@@ -387,6 +388,7 @@ void decodePieces() {
               b1=0;
               commercial=6400;
               residential=6400;
+              park=6400;
               break;
             case 6:
             //rescom-med
@@ -434,6 +436,7 @@ void decodePieces() {
           newPOI.setInt("b1", b1);
           newPOI.setInt("commercial", commercial);
           newPOI.setInt("residential", residential);
+          newPOI.setInt("park", park);
           newPOIs.setJSONObject(newPOIs.size(), newPOI);
           
         }

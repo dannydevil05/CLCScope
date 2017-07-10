@@ -209,7 +209,7 @@ void draw() {
   if (implementAgents) draw_Agents();
 
   textSize(16);
-  text("GLASSBOX COMPUTATION" , 20, STANDARD_MARGIN + 16);
+  //text("GLASSBOX COMPUTATION" , 20, STANDARD_MARGIN + 16);
   text("Ira Winder, MIT Media Lab", width-440, height - 60);
   text("Yimin Zhou, Centre for Liveable Cities", width-440, height - 30);
   textSize(12);
@@ -300,11 +300,10 @@ void drawLegends() {
         fill(#666666);
         if (currentForm[u][v] > 0) findFormFill(currentForm[u][v]);
         if (i != 14) {
-          //if (i < 8) 
-          rect(v*gridSpace, (i*5+u)*gridSpace, gridSpace, gridSpace);
+          if (i < 14) rect(v*gridSpace, (i*5+u)*gridSpace, gridSpace, gridSpace);
           //else if (i < 11) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace); //to skip drawing of certain typology
           //else rect(v*gridSpace, ((i-2)*5+u)*gridSpace, gridSpace, gridSpace);
-          if (i >= 14) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
+          else rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
           
         }
       }
@@ -320,7 +319,7 @@ void drawLegends() {
   popMatrix();
 }
 
-void drawCharts(){ //draw bar chars
+void drawCharts(){ //draw bar charts
   pushMatrix();
   int barWidth = int(4.0*TABLE_IMAGE_WIDTH/18);
   int barHeight = TABLE_IMAGE_HEIGHT;
@@ -337,8 +336,6 @@ void drawCharts(){ //draw bar chars
 
   color red = #FF0000;
   color green = #00FF00;
-  //float numPOIs[]={110,10,123};
-  //float totalPOIs=numPOIs[0]+numPOIs[1]+numPOIs[2];
   
   noStroke();
   //walkability
@@ -346,11 +343,13 @@ void drawCharts(){ //draw bar chars
     //fill(lerpColor(green, red, i/9.0)); //gradual shading of color
     //rect(barWidth/2, -50+i*barH, 0.3*barWidth, barH); 
   //}
-  float totalPOIs=float(amenity.size()+transit.size()+newPOIs.size());
+  //float totalPOIs=float(amenity.size()+transit.size()+newPOIs.size());
   //float numPOIs[]={amenity.size(),transit.size(),newPOIs.size()};
   
   //Draw %mixed-use bar chart
-  calculateSpace();
+  drawQuantumBar();
+  drawEmissionBar();
+ /* calculateSpace();
   float numPOIs[]=
     { //category of spaces
      totalResidential,
@@ -394,10 +393,11 @@ void drawCharts(){ //draw bar chars
   fill(textColor);
   text("MIXED", barWidth/2, 10);
   text("USE % ", barWidth/2, 30);
-  /*text("RES", barWidth/2, 70);
-  text("COMM", barWidth/2, 140);
-  text("B1", barWidth/2, 210);*/
-  textSize(20);
+  //text("RES", barWidth/2, 70);
+  //text("COMM", barWidth/2, 140);
+  //text("B1", barWidth/2, 210);
+  */
+  //textSize(20);
 
 /*  for (int i=0; i<3; i++) {
     fill(lerpColor(red, green, avgWalkAccess[0]));
@@ -769,18 +769,7 @@ void updateDock() {
   if (tablePieceInput[1][20][0] == 9) amenityFilter = 8;
 }
 
-/*void calculateSpace{
-  int totalB1,totalCommercial,totalResidential=0;
-  for (int i=0; i<newPOIs.size (); i++) {
-    poi = newPOIs.getJSONObject(i);
-    int currentB1 = newPOIs.getJSONObject(i).getInt("b1");
-    int currentCommercial= newPOIs.getJSONObject(i).getInt("commercial");
-    int currentResidential= newPOIs.getJSONObject(i).getInt("residential");
-    totalB1+=currentB1;
-    totalCommercial+=currentCommercial;
-    totalResidential+=currentResidential;
-  }
-}*/
+
 
 
 
