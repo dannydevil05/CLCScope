@@ -47,7 +47,7 @@ boolean bw = true;
 //      '>': Next Pathfinder Network (Random, Gridded, and Custom)
 //      '<': Enable/Disable Pathfinding
 
-float version = 1.1;
+float version = 1.0;
 String loadText = "WIA Usecase | Version " + version;
 
 //boolean showFrameRate = false;

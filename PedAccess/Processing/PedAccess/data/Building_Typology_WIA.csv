@@ -1,0 +1,17 @@
+ID,Description,Waterbody/storey,Park Space/storey,Road/storey,Commercial/storey,Residential/storey,Institution/storey,B1/storey,B2/storey,Park Space/m2,Commercial/m2,Residential/m2,Institution/m2,B1/m2
+0,B1-Low,0,0,0,0,0,0,2,0,0,0,0,0,12800
+1,B1-Medium,0,0,0,0,0,0,5,0,0,0,0,0,32000
+2,Health&Medical/Place of Worship/Civic&Community/Sports&Recreation,0,0,0,0,0,5,0,0,0,0,0,32000,0
+3,Residential - Medium,0,0,0,0,7,0,0,0,0,0,44800,0,0
+4,Residential - High,0,0,0,0,25,0,0,0,0,0,160000,0,0
+5,Residential with Commercial at 1st Storey - Low,0,0,0,1,1,0,0,0,6400,6400,6400,0,0
+6,Residential with Commercial at 1st Storey - Medium,0,0,0,1,10,1,1,1,0,6400,64000,6400,6400
+7,Residential with Commercial at 1st Storey - High,0,0,0,1,20,1,1,1,0,6400,128000,6400,6400
+8,Commercial - Low,0,0,0,2,0,1,1,1,0,12800,0,6400,6400
+9,Commercial - Medium,0,0,0,10,0,1,1,1,0,64000,0,6400,6400
+10,B1/Res - Low,0,0,0,0,2,0,1,0,0,0,12800,0,6400
+11,B1/Res - medium,0,0,0,0,10,0,1,0,0,0,64000,0,6400
+12,B1/Res - High,0,0,0,0,20,0,1,0,0,0,128000,0,6400
+13,Educational Institution,0,0,0,0,0,5,0,0,0,0,0,32000,0
+14,NIL,0,0,0,0,0,0,0,0,0,0,0,0,0
+15,Park/Open Space,0,1,0,0,0,0,0,0,6400,0,0,0,0

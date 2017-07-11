@@ -24,6 +24,7 @@ color whiteBrick = #FFFFFF;
 color brownBrick = #8B5F07;
 color purpleBrick= #87087c;
 color creamBrick= #ffe299;
+color lightblueBrick= #77fcff;
 color walmart_yellow = #ffc220;
 color walmart_light_green = #76c043;
 color walmart_dark_blue = #004c91;

@@ -334,74 +334,57 @@ void decodePieces() {
         String subtype ="";
         boolean crossing = false;
         int z = 0;
+        //initialize floorspace
         int b1=0;
         int commercial=0;
         int residential=0;
         int park=0;
-        if (ID >= 0 && ID <= 6 || ID == 9) {
+        int institution=0;
+        TableRow buildingArea=typology.getRow(ID);
+        
+        if (ID !=14) {
           
            switch (ID) {
             case 0:
             //b1-lo
               type = "amenity";
               subtype = "school";
-              b1=12800;
-              commercial=0;
-              residential=0;
               break;
             case 1:
             //b1-med
               type = "amenity";
               subtype = "child_care";
-              b1=32000;
-              commercial=0;
-              residential=0;
               break;
             case 2:
             //health
               type = "amenity";
               subtype = "health";
-              b1=0;
-              commercial=0;
-              residential=0;
               break;
             case 3:
             //res-med
               type = "amenity";
               subtype = "eldercare";
-              b1=0;
-              commercial=0;
-              residential=44800;
               break;
             case 4:
             //res-hi
               type = "amenity";
               subtype = "retail";
-              b1=0;
-              commercial=0;
-              residential=160000;
               break;
             case 5:
             //rescom-lo
               type = "amenity";
               subtype = "park";
-              b1=0;
-              commercial=6400;
-              residential=6400;
-              park=6400;
+              //park=6400;
               break;
             case 6:
             //rescom-med
               type = "transit";
               subtype = "bus_stop";
-              b1=0;
-              commercial=0;
-              residential=0;
               break;
             case 7:
             //rescom-hi
               type = "amenity";
-              subtype = "bus_stop";
+              subtype = "res/com_hi";
               break;
             case 8:
             //com-lo
@@ -411,37 +394,52 @@ void decodePieces() {
             case 9: 
             // com-med
               type = "transit";
-              subtype = "com_med";
-              b1=0;
-              commercial=6400;
-              residential=64000;
+              subtype = "housing";
               break;
             case 10: 
             // busres-low
-              type = "transit";
-              subtype = "bus/res_lo";
+              type = "amenity";
+              subtype = "b1/res_lo";
               break;
            case 11: 
-            // com-med
-              type = "transit";
+            // busres-med
+              type = "amenity";
+              subtype = "b1/res_med";
+              break;
+           case 12: 
+            // busres-hi
+              type = "amenity";
+              subtype = "bus/res_hi";
+              break;
+           case 13: 
+            // education
+              type = "amenity";
               subtype = "com_med";
               break;
+           case 15: 
+            // park
+              type = "amenity";
+              subtype = "park";
+              break;            
+        
            }       
+          
           
           JSONObject newPOI = new JSONObject();
           newPOI.setInt("u", i*4 + 2 + gridPanU + gridU/2);
           newPOI.setInt("v", j*4 + 2 + gridPanV + gridV/2);
           newPOI.setString("type", type);
           newPOI.setString("subtype", subtype);
-          newPOI.setInt("b1", b1);
-          newPOI.setInt("commercial", commercial);
-          newPOI.setInt("residential", residential);
-          newPOI.setInt("park", park);
+          newPOI.setInt("b1", buildingArea.getInt("B1/m2"));
+          newPOI.setInt("commercial", buildingArea.getInt("Commercial/m2"));
+          newPOI.setInt("residential", buildingArea.getInt("Residential/m2"));
+          newPOI.setInt("institution", buildingArea.getInt("Institution/m2"));
+          newPOI.setInt("park", buildingArea.getInt("Park Space/m2"));
           newPOIs.setJSONObject(newPOIs.size(), newPOI);
           
         }
         
-       else if (ID == 7 || ID == 10 || ID == 12 || ID == 13) {
+       else if (false) {
         
           // Update Pedestrian Network
           Integer[][] data = inputData.get(ID);

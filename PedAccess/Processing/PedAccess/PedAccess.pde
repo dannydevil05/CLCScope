@@ -112,6 +112,9 @@ void setup() {
   );
 
   // Functions run only once during setup
+  
+  //Load Typology Definition Tabel
+  loadTypologyTable();
 
   // Graphics Objects for Data Layers
   initDataGraphics();
