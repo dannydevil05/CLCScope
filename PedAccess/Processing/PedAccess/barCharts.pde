@@ -31,10 +31,10 @@ void drawEmissionBar(){
   pushMatrix();
   int barWidth = int(4.0*TABLE_IMAGE_WIDTH/18);
   int barHeight = TABLE_IMAGE_HEIGHT;
-  float maxChartHeight=17.0/22.0*TABLE_IMAGE_HEIGHT;
-  float chartSlice=maxChartHeight/100;
-  float chartHeight;
-  float ycounter=TABLE_IMAGE_HEIGHT/22.0;
+  int maxChartHeight=int(17.0/22.0*TABLE_IMAGE_HEIGHT);
+  int chartSlice=int (maxChartHeight/100.0);
+  int chartHeight;
+  int ycounter=int(TABLE_IMAGE_HEIGHT/22.0);
 
   
   //Draw Emission Offset
@@ -45,27 +45,30 @@ void drawEmissionBar(){
   textAlign(CENTER);
   text("EMISSION", barWidth/2, ycounter);
   text("OFFSET", barWidth/2, ycounter+20);
-  chartHeight=float(totalPark)/25000*maxChartHeight;
-  for (float i=0;i<(chartHeight/chartSlice);i++){
-    fill(lerpColor(lightgreen ,darkgreen,i/100.0));
+  chartHeight=int(totalPark/35000.0*maxChartHeight);
+  for (int i=chartHeight/chartSlice;i>=0;i--){
+    if (i==chartHeight/chartSlice) text(totalPark,barWidth/3,maxChartHeight-chartHeight+ycounter);
+    fill(lerpColor(darkgreen, lightgreen,i/100.0));
     rect( barWidth/3,maxChartHeight-chartHeight+ycounter,0.3*barWidth,chartSlice);
     ycounter+=chartSlice;
   }
     
  //Draw Emission Generated 
   color lightgrey=#bed4d4;
-  color darkgrey=#717a7a;
-  ycounter=TABLE_IMAGE_HEIGHT/22.0;
-  translate(-barWidth*0.667, 0);
+  color darkgrey=#1c1919;
+  color lightbrown=#f8de7e;
+  color darkbrown=#7c5102;
+  translate(-barWidth*2.0/3.0, 0);
+  ycounter=int(TABLE_IMAGE_HEIGHT/22.0);
   fill(textColor);
   textAlign(CENTER);
   text("EMISSION", barWidth/2, ycounter);
   text("GENERATED", barWidth/2, ycounter+20);
-  chartHeight=float(totalB1)/100000*maxChartHeight;
-  for (int i=0;i<100;i++){
-    fill(lerpColor(darkgrey,lightgrey,i/100.0));
-    rect( barWidth/3,maxChartHeight-chartHeight+ycounter,0.3*barWidth,chartHeight/100);
-    ycounter+=chartHeight/100;    
+  chartHeight=int(totalPark/35000.0*maxChartHeight);
+  for (int i=chartHeight/chartSlice;i>=0;i--){
+    fill(lerpColor(lightbrown, darkbrown,i/100.0));
+    rect( barWidth/3,maxChartHeight-chartHeight+ycounter,0.3*barWidth,chartSlice);
+    ycounter+=chartSlice;
   }
     
   popMatrix();

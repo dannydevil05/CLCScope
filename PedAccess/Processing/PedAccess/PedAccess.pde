@@ -304,7 +304,7 @@ void drawLegends() {
         if (currentForm[u][v] > 0) findFormFill(currentForm[u][v]);
         if (i != 14) {
           if (i < 14) rect(v*gridSpace, (i*5+u)*gridSpace, gridSpace, gridSpace);
-          //else if (i < 11) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace); //to skip drawing of certain typology
+          //else if (i < 11) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace); //to skip drawing of certain "empty" typology
           //else rect(v*gridSpace, ((i-2)*5+u)*gridSpace, gridSpace, gridSpace);
           else rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
           
@@ -337,8 +337,8 @@ void drawCharts(){ //draw bar charts
   //  line(barWidth/2-webScale*50, webScale*86, barWidth/2, webScale*50);
   //  line(barWidth/2+webScale*50, webScale*86, barWidth/2, webScale*50);
 
-  color red = #FF0000;
-  color green = #00FF00;
+  //color red = #FF0000;
+  //color green = #00FF00;
   
   noStroke();
   //walkability
@@ -352,54 +352,7 @@ void drawCharts(){ //draw bar charts
   //Draw %mixed-use bar chart
   drawQuantumBar();
   drawEmissionBar();
- /* calculateSpace();
-  float numPOIs[]=
-    { //category of spaces
-     totalResidential,
-     totalCommercial,
-     totalB1
-   };
-  int ycounter=0;
-  String barLabel="";
-  for (int i=0; i<3;i++){
-    switch (i){
-    case 0:
-      fill(creamBrick);
-      barLabel="RES";
-      break;
-    case 1:
-      fill(blueBrick);
-      barLabel="COM";
-      break;
-    case 2:
-      fill(purpleBrick);
-      barLabel="B1";
-      break;
-    }
-    float ratio=numPOIs[i]/(numPOIs[0]+numPOIs[1]+numPOIs[2]);
-    rect(STANDARD_MARGIN, ycounter, 0.3*barWidth, ratio*chartHeight);
-    
-    textSize(20);
-    fill(textColor);
-    //text(int(1000*ratio)/10.0 + "%",barWidth/2, 100+i*70);
-    text(int(1000*ratio)/10.0 + "%",barWidth/2, ycounter+7+ratio*chartHeight/2);
-    textSize(16);
-    text(barLabel,barWidth/2, ycounter+7-20+ratio*chartHeight/2);     
-    ycounter+=ratio*chartHeight;
-  }
-  
-  fill(textColor);
-  //rect(barWidth/2-5, -50 + barH*10*(1-avgWalkAccess[ageDemographic]), 0.3*barWidth+10, barH/4); 
-
-  // Walk Access
-  textSize(16);
-  fill(textColor);
-  text("MIXED", barWidth/2, 10);
-  text("USE % ", barWidth/2, 30);
-  //text("RES", barWidth/2, 70);
-  //text("COMM", barWidth/2, 140);
-  //text("B1", barWidth/2, 210);
-  */
+ 
   //textSize(20);
 
 /*  for (int i=0; i<3; i++) {
@@ -768,8 +721,8 @@ void updateDock() {
 
   // Update Amenity Filter
   amenityFilter = -1;
-  if (tablePieceInput[1][20][0] >= 0 && tablePieceInput[1][20][0] <= 6) amenityFilter = tablePieceInput[1][20][0];
-  if (tablePieceInput[1][20][0] == 9) amenityFilter = 8;
+  if (tablePieceInput[1][20][0]>=0 && tablePieceInput[1][20][0]<=13 ) amenityFilter = tablePieceInput[1][20][0];
+  if (tablePieceInput[1][20][0] ==15) amenityFilter = 14;
 }
 
 
