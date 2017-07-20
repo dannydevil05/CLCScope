@@ -39,7 +39,7 @@ boolean bw = true;
 //      'l' load CSV file of boundary locations (if editor is on)
 //
 //    Pathfinding Tools:
-//      'P': show/hide pathfinder Paths
+//      'P': show/hide pathfinder Pathsf
 //      'G': show/hide pathfinder Grids
 //      'h': show/hide additional info about pathfinder network
 //      'X': regenerate a random origin and destination

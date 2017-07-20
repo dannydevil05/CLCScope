@@ -169,7 +169,7 @@ void receive( byte[] data, String ip, int port ) {  // <-- extended handler
 //    print("["+i+"]"+split[i]+"; ");
  // }
  
-      println("Catch!  " + split[4]);
+      //println("Catch!  " + split[4]);
       
     
   

@@ -738,6 +738,10 @@ void keyPressed() {
         case 'k': // toggle heatmap
           enableDock = toggle(enableDock);
           break;
+        
+        case 'j': // toggle buffer
+          showBuffer = toggle(showBuffer);
+          break;
       }
     }
     

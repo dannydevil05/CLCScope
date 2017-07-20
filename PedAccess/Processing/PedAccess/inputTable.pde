@@ -20,6 +20,7 @@ ArrayList<Integer[][]> inputForm;
 // 7 = brown brick
 // 8 = purple brick
 // 9 = cream brick
+//10 = pink brick 
   
   // Data Type
   /* 0 = Vehicle Road Network
@@ -74,9 +75,9 @@ void setupPieces() {
     { 0, 1, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_0 = {
-    { 1, 1, 1, 1 },
-    { 1, 1, 1, 1 },
-    { 0, 0, 1, 1 },
+    { 0, 0, 0, 0 },
+    { 8, 8, 8, 8 },
+    { 8, 8, 8, 8 },
     { 0, 0, 0, 0 } };
   inputData.add(data_0);
   inputForm.add(form_0);
@@ -88,10 +89,10 @@ void setupPieces() {
     { 0, 3, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_3 = {
-    { 0, 0, 0, 0 },
-    { 0, 3, 3, 0 },
-    { 0, 5, 5, 5 },
-    { 0, 0, 0, 0 } };
+    { 10,10,10,10 },
+    { 10,10,10,10 },
+    { 0, 0, 8, 8 },
+    { 0, 0, 8, 8 } };
   inputData.add(data_3);
   inputForm.add(form_3);
   
@@ -188,8 +189,8 @@ void setupPieces() {
   Integer[][] form_8 = {
     { 2, 2, 2, 2 },
     { 2, 2, 2, 2 },
-    { 2, 2, 2, 2 },
-    { 2, 2, 2, 2 } };
+    { 0, 2, 2, 2 },
+    { 0, 0, 2, 2 } };
   inputData.add(data_8);
   inputForm.add(form_8);
 
@@ -228,10 +229,10 @@ void setupPieces() {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_11 = {
-    { 1, 2, 3, 4 },
-    { 0, 0, 0, 0 },
-    { 0, 0, 0, 0 },
-    { 0, 0, 0, 0 } };
+    { 9, 9, 9, 9 },
+    { 9, 9, 9, 9 },
+    { 1, 8, 8, 1 },
+    { 8, 8, 8, 8 } };
   inputData.add(data_11);
   inputForm.add(form_11);
   
@@ -288,14 +289,14 @@ void setupPieces() {
     { 0, 5, 5, 0 },
     { 0, 5, 5, 0 },
     { 0, 5, 5, 5  } };
-  inputData.add(data_5);
-  inputForm.add(form_5);
+  inputData.add(data_15);
+  inputForm.add(form_15);
 }
 
 void decodePieces() {
   
   clearInputData();
-  
+  renderBufferMap(buffer);
   for (int i=0; i<tablePieceInput.length; i++) {
     for (int j=0; j<tablePieceInput[0].length; j++) {
       int ID = tablePieceInput[i][j][0];

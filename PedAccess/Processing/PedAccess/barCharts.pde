@@ -45,16 +45,16 @@ void drawEmissionBar(){
   textAlign(CENTER);
   text("EMISSION", barWidth/2, ycounter);
   text("OFFSET", barWidth/2, ycounter+20);
-  chartHeight=int(totalPark/35000.0*maxChartHeight);
+  chartHeight=int(totalPark/30000.0*maxChartHeight);
   for (int i=chartHeight/chartSlice;i>=0;i--){
-    if (i==chartHeight/chartSlice) text(totalPark,barWidth/3,maxChartHeight-chartHeight+ycounter);
+    if (i==chartHeight/chartSlice) text(nfc(totalPark),barWidth/2,maxChartHeight-chartHeight+ycounter-10);
     fill(lerpColor(darkgreen, lightgreen,i/100.0));
     rect( barWidth/3,maxChartHeight-chartHeight+ycounter,0.3*barWidth,chartSlice);
     ycounter+=chartSlice;
   }
     
  //Draw Emission Generated 
-  color lightgrey=#bed4d4;
+  color lightgrey=#c1d6da;
   color darkgrey=#1c1919;
   color lightbrown=#f8de7e;
   color darkbrown=#7c5102;
@@ -64,9 +64,11 @@ void drawEmissionBar(){
   textAlign(CENTER);
   text("EMISSION", barWidth/2, ycounter);
   text("GENERATED", barWidth/2, ycounter+20);
-  chartHeight=int(totalPark/35000.0*maxChartHeight);
+  int emissionGen=totalCommercial+totalInstitution+totalB1;
+  chartHeight=int((emissionGen)/300000.0*maxChartHeight);
   for (int i=chartHeight/chartSlice;i>=0;i--){
-    fill(lerpColor(lightbrown, darkbrown,i/100.0));
+    if (i==chartHeight/chartSlice) text(nfc(emissionGen),barWidth/2,maxChartHeight-chartHeight+ycounter-10);
+    fill(lerpColor(lightgrey, darkgrey,i/100.0));
     rect( barWidth/3,maxChartHeight-chartHeight+ycounter,0.3*barWidth,chartSlice);
     ycounter+=chartSlice;
   }

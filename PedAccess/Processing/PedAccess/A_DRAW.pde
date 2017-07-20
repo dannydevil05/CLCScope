@@ -5,7 +5,7 @@ boolean showEdges = false;
 boolean showSwarm = true;
 boolean showInfo = false;
 boolean showDemoMap = false;
-boolean showWalkAccess = true;
+boolean showWalkAccess = false;
 
 // Makes darker colors more visible when projecting
 int masterAlpha;

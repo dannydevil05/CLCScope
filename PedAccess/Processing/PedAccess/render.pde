@@ -24,6 +24,7 @@ color whiteBrick = #FFFFFF;
 color brownBrick = #8B5F07;
 color purpleBrick= #87087c;
 color creamBrick= #ffe299;
+color pinkBrick= #ff00db;
 color lightblueBrick= #77fcff;
 color walmart_yellow = #ffc220;
 color walmart_light_green = #76c043;
@@ -89,7 +90,10 @@ void renderTable() {
   if (showInputData) {
     table.image(input, 0, 0);
   }
-
+  // Draws Buffer map
+  if (showBuffer) {
+  table.image(buffer,0,0);
+}
   // Draws lines
   table.image(l, 0, 0);
 
@@ -463,9 +467,11 @@ void renderNetworkRaster(PGraphics graphic) {
       } else if (ID == 7) {
         input.fill(brownBrick);
       } else if (ID == 8){
-        fill(purpleBrick);
+        input.fill(purpleBrick);
       } else if (ID == 9){
-        fill(creamBrick);
+        input.fill(creamBrick);
+      } else if (ID == 10){
+        input.fill(pinkBrick);
       }
     }
     
@@ -490,6 +496,8 @@ void renderNetworkRaster(PGraphics graphic) {
         fill(purpleBrick);
       } else if (ID == 9){
         fill(creamBrick);
+      } else if (ID == 10){
+        fill(pinkBrick);
       }
      
     }

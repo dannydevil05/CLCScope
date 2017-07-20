@@ -118,6 +118,7 @@ void setup() {
 
   // Graphics Objects for Data Layers
   initDataGraphics();
+  initBuffer();
 
   // Initial Projection-Mapping Canvas
   initializeProjection2D();
@@ -151,6 +152,7 @@ void setup() {
 
   // Refreshes the graphics available in all of the canvases
   reRender();
+  renderBufferMap(buffer);
 
   // Loads and formats menu items
   loadMenu(tableWidth, tableHeight);
@@ -273,7 +275,6 @@ void draw() {
     image(projector, margin.width, 0);
     //println(margin.width + projector.width, margin.height, projector.height);
   }
-
   //println("changeClock " + changeClock);
 }
 
@@ -481,7 +482,7 @@ void drawPOIs() {
     subtype = newPOIs.getJSONObject(i).getString("subtype");
     inBounds = u>0 && u<4*18 && v>0 && v<4*22-dockV;
 
-    if (inBounds) drawIcon(int(TABLE_IMAGE_OFFSET + u*TABLE_IMAGE_WIDTH/(4.0*18)), int(STANDARD_MARGIN + v*TABLE_IMAGE_HEIGHT/(4.0*22)), subtype, 12);
+    //if (inBounds) drawIcon(int(TABLE_IMAGE_OFFSET + u*TABLE_IMAGE_WIDTH/(4.0*18)), int(STANDARD_MARGIN + v*TABLE_IMAGE_HEIGHT/(4.0*22)), subtype, 12);
   }
 }
 
