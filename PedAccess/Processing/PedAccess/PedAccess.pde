@@ -28,6 +28,7 @@
  */
 
 String systemOS;
+int time =millis();
 
 // Library needed for ComponentAdapter()
 import java.awt.event.*;
@@ -152,7 +153,7 @@ void setup() {
 
   // Refreshes the graphics available in all of the canvases
   reRender();
-  renderBufferMap(buffer);
+  
 
   // Loads and formats menu items
   loadMenu(tableWidth, tableHeight);
@@ -199,6 +200,7 @@ void draw() {
 
     changeDetected = false;
   }
+  renderBufferLayer(buffer);
 
   if (outputReady) {
     renderOutputTableLayers(output);
@@ -213,8 +215,9 @@ void draw() {
 
   if (implementAgents) draw_Agents();
 
+  textSize(24);
+  text("CityTIM" , 20, STANDARD_MARGIN + 16);
   textSize(16);
-  //text("GLASSBOX COMPUTATION" , 20, STANDARD_MARGIN + 16);
   text("Ira Winder, MIT Media Lab", width-440, height - 60);
   text("Yimin Zhou, Centre for Liveable Cities", width-440, height - 30);
   textSize(12);
@@ -347,8 +350,6 @@ void drawCharts(){ //draw bar charts
     //fill(lerpColor(green, red, i/9.0)); //gradual shading of color
     //rect(barWidth/2, -50+i*barH, 0.3*barWidth, barH); 
   //}
-  //float totalPOIs=float(amenity.size()+transit.size()+newPOIs.size());
-  //float numPOIs[]={amenity.size(),transit.size(),newPOIs.size()};
   
   //Draw %mixed-use bar chart
   drawQuantumBar();

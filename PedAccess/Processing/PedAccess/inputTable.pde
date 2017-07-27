@@ -21,6 +21,7 @@ ArrayList<Integer[][]> inputForm;
 // 8 = purple brick
 // 9 = cream brick
 //10 = pink brick 
+//11 = light blue brick
   
   // Data Type
   /* 0 = Vehicle Road Network
@@ -131,10 +132,10 @@ void setupPieces() {
     { 0, 7, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_4 = {
-    { 2, 2, 2, 2 },
-    { 2, 2, 2, 2 },
-    { 0, 0, 2, 2 },
-    { 0, 0, 2, 2 } };
+    { 9, 9, 1, 1 },
+    { 9, 9, 1, 1 },
+    { 1, 1, 1, 1 },
+    { 1, 1, 1, 1 } };
   inputData.add(data_4);
   inputForm.add(form_4);  
   
@@ -145,10 +146,10 @@ void setupPieces() {
     { 0, 6, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_5 = {
-    { 0, 5, 5, 5 },
-    { 0, 5, 5, 0 },
-    { 0, 5, 5, 0 },
-    { 0, 5, 5, 5  } };
+    { 0, 0, 0, 0 },
+    { 0, 1, 1, 0 },
+    { 0, 1, 1, 0 },
+    { 0, 2, 2, 0 } };
   inputData.add(data_5);
   inputForm.add(form_5);
   
@@ -166,17 +167,17 @@ void setupPieces() {
   inputData.add(data_6);
   inputForm.add(form_6);  
   
-  // 7: RES/COM-HI
+  // 7: RESCOM-HI
   Integer[][] data_7 = {
     { 0, 0, 0, 0 },
     { 1, 1, 1, 1 },
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_7 = {
-    { 0, 0, 0, 0 },
-    { 6, 6, 6, 6 },
-    { 0, 0, 0, 0 },
-    { 0, 0, 0, 0 } };
+    { 1, 1, 1, 1 },
+    { 1, 1, 1, 1 },
+    { 11,2, 2,11 },
+    { 2, 2, 2, 2 } };
   inputData.add(data_7);
   inputForm.add(form_7);
 
@@ -215,10 +216,10 @@ void setupPieces() {
     { 4, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_10 = {
+    { 0, 0, 0, 0 },
     { 8, 8, 8, 8 },
-    { 8, 8, 8, 8 },
-    { 8, 8, 8, 8 },
-    { 8, 8, 8, 8 }};
+    { 1, 1, 1, 1 },
+    { 1, 1, 1, 1 }};
   inputData.add(data_10);
   inputForm.add(form_10);
 
@@ -231,7 +232,7 @@ void setupPieces() {
   Integer[][] form_11 = {
     { 9, 9, 9, 9 },
     { 9, 9, 9, 9 },
-    { 1, 8, 8, 1 },
+    { 9, 8, 8, 9 },
     { 8, 8, 8, 8 } };
   inputData.add(data_11);
   inputForm.add(form_11);
@@ -296,7 +297,7 @@ void setupPieces() {
 void decodePieces() {
   
   clearInputData();
-  renderBufferMap(buffer);
+  //renderBufferMap(buffer);
   for (int i=0; i<tablePieceInput.length; i++) {
     for (int j=0; j<tablePieceInput[0].length; j++) {
       int ID = tablePieceInput[i][j][0];

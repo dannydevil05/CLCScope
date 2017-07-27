@@ -1,8 +1,8 @@
-boolean showPaths = true;
+boolean showPaths = false; //shows pathfinder
 boolean showGrid = false;
 boolean showSource = false;
 boolean showEdges = false;
-boolean showSwarm = true;
+boolean showSwarm = false; //shows walking agents
 boolean showInfo = false;
 boolean showDemoMap = false;
 boolean showWalkAccess = false;

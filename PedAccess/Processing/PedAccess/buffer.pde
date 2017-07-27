@@ -1,34 +1,101 @@
 boolean showBuffer=true;
 
-PGraphics buffer;
 
+PGraphics buffer;
 int bufferRange=100;
-//float distPerPixel=80*22/table.height ; bufferRange/(80*22/table.height)
+//float distPerPixel=80*22/table.height ;
+int bufferMap[][]=new int[18][22];
+boolean hasConflict[][]= new boolean[18][22];
+
 
 void initBuffer(){
   buffer= createGraphics(table.width, table.height);
 }
 
-void renderBufferMap(PGraphics a){
+void renderBufferLayer(PGraphics a){
+  boolean textClash=false;
+  //int bufferMap[][]=new int[tablePieceInput.length][tablePieceInput[0].length];
   a.beginDraw();
   a.clear();
-  //a.background(color(200,0,0,50));
-  a.fill(color(200,0,0,150));
-  for (int i=0; i<tablePieceInput.length; i++) {
-  for (int j=0; j<tablePieceInput[0].length; j++) {
-    int ID = tablePieceInput[i][j][0];
-    if (ID ==0 || ID==1) {
-      a.ellipse(4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight,bufferRange/(80*22/table.height),bufferRange/(80*22/table.height));
-      //print("PRINT BUFFER TRUE");
+  initBufferMatrices();
+  //a.fill(color(200,0,0,150));
+  /*for (int i=0; i<tablePieceInput.length; i++) {
+    for (int j=0; j<tablePieceInput[0].length; j++) {
+      int ID = tablePieceInput[i][j][0];
+      if (ID ==0 || ID==1) {
+        a.ellipse(4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight,bufferRange/(80*18/TABLE_IMAGE_WIDTH),bufferRange/(80*22/TABLE_IMAGE_HEIGHT));
+      }
     }
-  }
-  }
+  }*/
+  computeGridBuffer();
+  for (int i=0; i<bufferMap.length; i++) {
+    for (int j=0; j<bufferMap[0].length; j++) {
+      hasConflict[i][j]=checkIfConflict(tablePieceInput[i][j][0], bufferMap[i][j]);
+      if (bufferMap[i][j]==0 ) {
+        a.fill(0,0,200,70);
+        int passedMillis=millis()-time;
+        int offDuration=500;
+        int onDuration=500;
+        if (hasConflict[i][j]==true && passedMillis>=offDuration) {
+          //Draws a flashing red box if conflict is true
+          //Box turns on for 0.5s
+          //and off for 0.5s
+          textClash=true;
+          a.fill(200,0,0);
+          if (passedMillis>=(offDuration+onDuration)) time=millis();
+        }
+      }      
+      else a.noFill();
+      a.rect(4*i*gridWidth,4*j*gridHeight,4*gridWidth,4*gridHeight);
+       if (textClash){
+        a.fill(255,255,255);
+        a.textAlign(CENTER);
+        a.text("CLASH!",4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight);
+        textClash=false;
+       }
+    }
+  } 
   a.endDraw();
 }
 
+  //void drawCircleBuffer(){}
 
-// Rules:
-// distance(B1,Residential)>100m
+  void computeGridBuffer(){   
+      for (int i = 0; i < tablePieceInput.length; i++) {
+        for (int j = 0; j < tablePieceInput[0].length; j++) {
+          if (tablePieceInput[i][j][0] == 0 || tablePieceInput[i][j][0]==1) {
+            for (int u=-1;u<=1;u++){
+              for (int v=-1;v<=1;v++){
+                if ((i+u)>=0 && (i+u)<=17 && (j+v)>=0 && (j+v)<=21){
+                  bufferMap[i+u][j+v]=0;
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+      
+            
+  void initBufferMatrices(){
+      for (int i = 0; i < tablePieceInput.length; i++) {
+        for (int j = 0; j < tablePieceInput[0].length; j++) {
+          bufferMap[i][j]=-1;
+          hasConflict[i][j]=false;
+        }
+      } 
+  }
+  
+ 
+  boolean checkIfConflict(int building, int existingBuffer){
+    // Rules:
+    // distance(B1,Residential)>100m
+    if (existingBuffer==0 ){
+      if (building>1 && building<16) return true;
+      else return false;
+    }
+    else return false;
+  }
 
 
 
@@ -51,11 +118,7 @@ void renderBufferMap(PGraphics a){
 
 
 
-
-
-
-
-public boolean[][] bufferValidation(int[][][] tablePieceInput, int bufferID, int bufferRange) {
+/*public boolean[][] bufferValidation(int[][][] tablePieceInput, int bufferID, int bufferRange) {
   // based on tablePieceInput, for each position (i,j). check the buffer rules are violated or not.
   // Output:
   // for each (i,j), output true (rules are violated )or false.
@@ -119,3 +182,4 @@ public boolean[][] bufferValidation(int[][][] tablePieceInput, int bufferID, int
   }
   return bufferValidationOutput;
 }
+*/

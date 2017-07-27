@@ -1,0 +1,17 @@
+S/N,Description,Total GPR for mixed use devp,Waterbody/m2,Park Space/m2,Road/m2,Commercial/m2,Residential/m2,Institution/m2,B1/m2,B2/m2,GFA
+0,B1-Low,2,0,0,0,0,0,0,12800,0,12800
+1,B1-Medium,2.5,0,0,0,0,0,0,16000,0,16000
+2,Health&Medical/Place of Worship/Civic&Community/Sports&Recreation,1,0,0,0,0,0,6400,0,0,6400
+3,Residential - Medium,1.6,0,0,0,0,10240,0,0,0,10240
+4,Residential - High,2.8,0,0,0,0,17920,0,0,0,17920
+5,Residential with Commercial at 1st Storey - Low,1.4,0,0,0,1792,7168,0,0,0,8960
+6,Residential with Commercial at 1st Storey - Medium,3.5,0,0,0,4480,17920,0,0,0,22400
+7,Residential with Commercial at 1st Storey - High,5,0,0,0,6400,25600,0,0,0,32000
+8,Commercial - Low,1.2,0,0,0,7680,0,0,0,0,7680
+9,Commercial - Medium,2.5,0,0,0,16000,0,0,0,0,16000
+10,B1/Res - Low,2.5,0,0,0,0,12800,0,3200,0,16000
+11,B1/Res - medium,3.5,0,0,0,0,17920,0,4480,0,22400
+12,B1/Res - High,5,0,0,0,0,25600,0,6400,0,32000
+13,Educational Institution,1,0,0,0,0,0,6400,0,0,6400
+14,,,,,,,,,,,
+15,Park/Open Space,1,0,6400,0,0,0,0,0,0,6400

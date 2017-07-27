@@ -86,6 +86,10 @@ void renderTable() {
   if (showOutputData) {
     table.image(output, 0, 0);
   }
+  
+    //if (showBuffer) {
+ // table.image(buffer,0,0);
+ // }
 
   if (showInputData) {
     table.image(input, 0, 0);
@@ -100,6 +104,7 @@ void renderTable() {
   // Draws Cursor
   renderCursor(c);
   table.image(c, 0, 0);
+
   
 //  // Draws Mock Dock
 //  table.fill(0);
@@ -137,7 +142,10 @@ void reRender() {
 
   // Renders Output Table Layers to Canvases
   renderOutputTableLayers(output);
-
+  
+  // Render Buffer Layer
+  renderBufferLayer(buffer);
+  
   // reRender Minimap
   reRenderMiniMap(miniMap);
 
@@ -472,6 +480,8 @@ void renderNetworkRaster(PGraphics graphic) {
         input.fill(creamBrick);
       } else if (ID == 10){
         input.fill(pinkBrick);
+      } else if (ID == 11){
+        input.fill(lightblueBrick);
       }
     }
     
@@ -498,6 +508,8 @@ void renderNetworkRaster(PGraphics graphic) {
         fill(creamBrick);
       } else if (ID == 10){
         fill(pinkBrick);
+      } else if (ID == 11){
+        fill(lightblueBrick);
       }
      
     }
