@@ -83,6 +83,8 @@ boolean showVehicle = false;
 
 boolean enableDock = true;
 
+boolean planningMode=false;
+
 boolean sketchFullScreen() {
   return true;
 }
@@ -93,9 +95,12 @@ PImage wmt_logo;
 // Class that holds a button menu
 Menu mainMenu, hideMenu;
 
+// class of bar charts;
+BarChart employmentChart,residentChart;
+
 void setup() {
   size(screenWidth, screenHeight, P3D);
-//fullScreen();
+  //fullScreen();
 
   // Frame Options
 
@@ -113,7 +118,7 @@ void setup() {
   );
 
   // Functions run only once during setup
-  
+
   //Load Typology Definition Tabel
   loadTypologyTable();
 
@@ -153,13 +158,19 @@ void setup() {
 
   // Refreshes the graphics available in all of the canvases
   reRender();
-  
+
 
   // Loads and formats menu items
   loadMenu(tableWidth, tableHeight);
 
   //Load Walmart "Spark" Logo
   wmt_logo = loadImage("Walmart_Spark.png");
+  
+  //init bar charts
+  employmentChart=new BarChart();
+  employmentChart.setLabel("EMPLOY. POP");
+  residentChart=new BarChart();
+  residentChart.setLabel ("RESID. POP");
 
   systemOS = System.getProperty("os.name").substring(0, 3);
   println(systemOS);
@@ -216,7 +227,7 @@ void draw() {
   if (implementAgents) draw_Agents();
 
   textSize(24);
-  text("CityTIM" , 20, STANDARD_MARGIN + 16);
+  text("CityTIM", 20, STANDARD_MARGIN + 16);
   textSize(16);
   text("Ira Winder, MIT Media Lab", width-440, height - 60);
   text("Yimin Zhou, Centre for Liveable Cities", width-440, height - 30);
@@ -311,7 +322,6 @@ void drawLegends() {
           //else if (i < 11) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace); //to skip drawing of certain "empty" typology
           //else rect(v*gridSpace, ((i-2)*5+u)*gridSpace, gridSpace, gridSpace);
           else rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
-          
         }
       }
     }
@@ -326,7 +336,7 @@ void drawLegends() {
   popMatrix();
 }
 
-void drawCharts(){ //draw bar charts
+void drawCharts() { //draw bar charts
   pushMatrix();
   int barWidth = int(4.0*TABLE_IMAGE_WIDTH/18);
   int barHeight = TABLE_IMAGE_HEIGHT;
@@ -340,57 +350,103 @@ void drawCharts(){ //draw bar charts
   //  line(barWidth/2, 0, barWidth/2, webScale*50);
   //  line(barWidth/2-webScale*50, webScale*86, barWidth/2, webScale*50);
   //  line(barWidth/2+webScale*50, webScale*86, barWidth/2, webScale*50);
+  color red = #FF0000;
+  color green = #00FF00;
 
-  //color red = #FF0000;
-  //color green = #00FF00;
-  
   noStroke();
   //walkability
-  //for (int i=0; i<10; i++) {
-    //fill(lerpColor(green, red, i/9.0)); //gradual shading of color
-    //rect(barWidth/2, -50+i*barH, 0.3*barWidth, barH); 
-  //}
-  
-  //Draw %mixed-use bar chart
-  drawQuantumBar();
-  drawEmissionBar();
- 
-  //textSize(20);
+  if (!planningMode){
+    translate(10, 30);
+    translate(0, TABLE_IMAGE_HEIGHT-barOffset);
+    textSize(12);
+    int barH=22;
+    for (int i=0; i<10; i++) {
+    fill(lerpColor(green, red, i/9.0)); //gradual shading of color
+    rect(barWidth/2, -50+i*barH, 0.3*barWidth, barH); 
+    }
+    fill(textColor);
+    rect(barWidth/2-5, -50 + barH*10*(1-avgWalkAccess[ageDemographic]), 0.3*barWidth+10, barH/4);
+    
+      // Walk Access
+    textSize(16);
+    fill(textColor);
+    text("WALK", 0, -60);
+    text("ACCESS", 0, -40);
+    text("Young", 0, 0);
+    text("Working", 0, 70);
+    text("Senior", 0, 140);
+    textSize(20);
+    
+    for (int i=0; i<3; i++) {
+   fill(lerpColor(red, green, avgWalkAccess[0]));
+   text(int(1000*avgWalkAccess[0])/10.0 + "%", 0, 30);
+   fill(lerpColor(red, green, avgWalkAccess[1]));
+   text(int(1000*avgWalkAccess[1])/10.0 + "%", 0, 100);
+   fill(lerpColor(red, green, avgWalkAccess[2]));
+   text(int(1000*avgWalkAccess[2])/10.0 + "%", 0, 170);
+   }
 
-/*  for (int i=0; i<3; i++) {
-    fill(lerpColor(red, green, avgWalkAccess[0]));
-    text(int(1000*avgWalkAccess[0])/10.0 + "%", 0, 30);
-    fill(lerpColor(red, green, avgWalkAccess[1]));
-    text(int(1000*avgWalkAccess[1])/10.0 + "%", 0, 100);
-    fill(lerpColor(red, green, avgWalkAccess[2]));
-    text(int(1000*avgWalkAccess[2])/10.0 + "%", 0, 170);
-  }*/
-    /*for (int i=0; i<3; i++) {
-      fill(purpleBrick);
-      text(int(1000*avgWalkAccess[0])/10.0 + "%", 0, 30);
-      fill(blueBrick);
-      text(int(1000*avgWalkAccess[1])/10.0 + "%", 0, 100);
-      fill(creamBrick);
-      text(int(1000*avgWalkAccess[2])/10.0 + "%", 0, 170); 
-    } */
-  
+
 
   //overlays a translucent box over the text to highlight text
-  /*fill(0, 175);
-  noStroke();
-  switch(ageDemographic) {
-  case 0:
-    rect(-5, 55, barWidth/2-10, 130);
-    break;
-  case 1:
-    rect(-5, -15, barWidth/2-10, 60);
-    rect(-5, 105, barWidth/2-10, 70);
-    break;
-  case 2:
-    rect(-5, -15, barWidth/2-10, 130);
-    break;
-  }*/
+  fill(0, 175);
+   noStroke();
+   switch(ageDemographic) {
+   case 0:
+   rect(-5, 55, barWidth/2-10, 130);
+   break;
+   case 1:
+   rect(-5, -15, barWidth/2-10, 60);
+   rect(-5, 105, barWidth/2-10, 70);
+   break;
+   case 2:
+   rect(-5, -15, barWidth/2-10, 130);
+   break;
+   }
+  }
 
+  //Draw %mixed-use bar chart
+  if (planningMode){
+    drawQuantumBar();
+    drawSidePanel();
+  } 
+  //textSize(20);
+ 
+  /*if (!planningMode){  
+    for (int i=0; i<3; i++) {
+     fill(lerpColor(red, green, avgWalkAccess[0]));
+     text(int(1000*avgWalkAccess[0])/10.0 + "%", 0, 30);
+     fill(lerpColor(red, green, avgWalkAccess[1]));
+     text(int(1000*avgWalkAccess[1])/10.0 + "%", 0, 100);
+     fill(lerpColor(red, green, avgWalkAccess[2]));
+     text(int(1000*avgWalkAccess[2])/10.0 + "%", 0, 170);
+     }
+    for (int i=0; i<3; i++) {
+     fill(purpleBrick);
+     text(int(1000*avgWalkAccess[0])/10.0 + "%", 0, 30);
+     fill(blueBrick);
+     text(int(1000*avgWalkAccess[1])/10.0 + "%", 0, 100);
+     fill(creamBrick);
+     text(int(1000*avgWalkAccess[2])/10.0 + "%", 0, 170); 
+     } 
+  
+  
+    //overlays a translucent box over the text to highlight text
+    fill(0, 175);
+     noStroke();
+     switch(ageDemographic) {
+     case 0:
+     rect(-5, 55, barWidth/2-10, 130);
+     break;
+     case 1:
+     rect(-5, -15, barWidth/2-10, 60);
+     rect(-5, 105, barWidth/2-10, 70);
+     break;
+     case 2:
+     rect(-5, -15, barWidth/2-10, 130);
+     break;
+     }
+  }*/
   //  // Walk Quality
   //  textSize(12);
   //  
@@ -455,7 +511,7 @@ void drawPOIs() {
 
   for (int i=0; i<amenity.size (); i++) {
     poi = amenity.getJSONObject(i);
-      u = amenity.getJSONObject(i).getInt("u") - gridPanU;// - gridU/2;
+    u = amenity.getJSONObject(i).getInt("u") - gridPanU;// - gridU/2;
     v = amenity.getJSONObject(i).getInt("v") - gridPanV;// - gridV/2;
     ;
     subtype = amenity.getJSONObject(i).getString("subtype");
@@ -517,8 +573,8 @@ void drawIcon(int x, int y, int type, int dim, int filter) {
     fill(tanBrick);
     stroke(textColor);
     rect(x, y, dim, dim);
-    if (drawBuffer==true){
-      fill(0,100,0,250);
+    if (drawBuffer==true) {
+      fill(0, 100, 0, 250);
       rectMode(CENTER);
       rect(x, y, 50, 50);
       rectMode(CORNER);
@@ -606,7 +662,7 @@ void drawIcon(int x, int y, String subtype, int dim) {
 int amenityFilter = -1;
 
 void drawDock() {
-  translate(TABLE_IMAGE_OFFSET , STANDARD_MARGIN + TABLE_IMAGE_HEIGHT*(19.0/22.0));
+  translate(TABLE_IMAGE_OFFSET, STANDARD_MARGIN + TABLE_IMAGE_HEIGHT*(19.0/22.0));
 
   fill(0);
   noStroke();
@@ -720,6 +776,12 @@ void updateDock() {
   if (tablePieceInput[14][20][0] >= 0) ageDemographic = 0;
   if (tablePieceInput[15][20][0] >= 0) ageDemographic = 1;
   if (tablePieceInput[16][20][0] >= 0) ageDemographic = 2;
+  
+  //Update Radius  
+  if (tablePieceInput[14][20][0] >= 0) bufferRadius = 50;
+  if (tablePieceInput[15][20][0] >= 0) bufferRadius = 100;
+  if (tablePieceInput[16][20][0] >= 0) bufferRadius = 200;
+
 
   // Update Amenity Filter
   amenityFilter = -1;
@@ -731,4 +793,4 @@ void updateDock() {
 
 
 
-  
+

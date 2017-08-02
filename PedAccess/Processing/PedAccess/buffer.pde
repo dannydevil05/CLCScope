@@ -1,11 +1,10 @@
-boolean showBuffer=true;
-
-
 PGraphics buffer;
-int bufferRange=100;
-//float distPerPixel=80*22/table.height ;
-int bufferMap[][]=new int[18][22];
+
+boolean showBuffer=true;
 boolean hasConflict[][]= new boolean[18][22];
+
+int bufferRadius=100;
+int bufferMap[][]=new int[18][22];
 
 
 void initBuffer(){
@@ -13,26 +12,32 @@ void initBuffer(){
 }
 
 void renderBufferLayer(PGraphics a){
+  float unitDist=20.0/gridWidth;
   boolean textClash=false;
   //int bufferMap[][]=new int[tablePieceInput.length][tablePieceInput[0].length];
   a.beginDraw();
   a.clear();
   initBufferMatrices();
-  //a.fill(color(200,0,0,150));
-  /*for (int i=0; i<tablePieceInput.length; i++) {
+  computeGridBuffer();
+  for (int i=0; i<tablePieceInput.length; i++) {
     for (int j=0; j<tablePieceInput[0].length; j++) {
       int ID = tablePieceInput[i][j][0];
       if (ID ==0 || ID==1) {
-        a.ellipse(4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight,bufferRange/(80*18/TABLE_IMAGE_WIDTH),bufferRange/(80*22/TABLE_IMAGE_HEIGHT));
+        a.stroke(0);
+        a.fill(0,0,255,50);
+        a.rectMode(RADIUS);
+        a.rect((4*i+2)*gridWidth,(4*j+2)*gridHeight,(bufferRadius+40)/unitDist,(bufferRadius+40)/unitDist);
       }
     }
-  }*/
-  computeGridBuffer();
+  }
   for (int i=0; i<bufferMap.length; i++) {
     for (int j=0; j<bufferMap[0].length; j++) {
       hasConflict[i][j]=checkIfConflict(tablePieceInput[i][j][0], bufferMap[i][j]);
       if (bufferMap[i][j]==0 ) {
-        a.fill(0,0,200,70);
+        //a.fill(0,0,200,70);
+        //a.stroke(0,0,200);
+        a.noFill();
+        a.noStroke();
         int passedMillis=millis()-time;
         int offDuration=500;
         int onDuration=500;
@@ -42,30 +47,35 @@ void renderBufferLayer(PGraphics a){
           //and off for 0.5s
           textClash=true;
           a.fill(200,0,0);
+          a.stroke(200,0,0);
           if (passedMillis>=(offDuration+onDuration)) time=millis();
         }
       }      
-      else a.noFill();
+      else {
+        a.noFill();
+        a.noStroke();
+      }
+      a.rectMode(CORNER);
       a.rect(4*i*gridWidth,4*j*gridHeight,4*gridWidth,4*gridHeight);
        if (textClash){
         a.fill(255,255,255);
         a.textAlign(CENTER);
-        a.text("CLASH!",4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight);
+        a.text("CLASH",4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight);
         textClash=false;
        }
     }
-  } 
+  }
   a.endDraw();
 }
 
-  //void drawCircleBuffer(){}
 
-  void computeGridBuffer(){   
+  void computeGridBuffer(){
+      int radInGrid=bufferRadius/80+1; 
       for (int i = 0; i < tablePieceInput.length; i++) {
         for (int j = 0; j < tablePieceInput[0].length; j++) {
           if (tablePieceInput[i][j][0] == 0 || tablePieceInput[i][j][0]==1) {
-            for (int u=-1;u<=1;u++){
-              for (int v=-1;v<=1;v++){
+            for (int u=-radInGrid;u<=radInGrid;u++){
+              for (int v=-radInGrid;v<=radInGrid;v++){
                 if ((i+u)>=0 && (i+u)<=17 && (j+v)>=0 && (j+v)<=21){
                   bufferMap[i+u][j+v]=0;
                 }

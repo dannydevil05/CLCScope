@@ -148,12 +148,12 @@ void setupPieces() {
   Integer[][] form_5 = {
     { 0, 0, 0, 0 },
     { 0, 1, 1, 0 },
-    { 0, 1, 1, 0 },
-    { 0, 2, 2, 0 } };
+    { 0, 2, 2, 0 },
+    { 0, 0, 0, 0 } };
   inputData.add(data_5);
   inputForm.add(form_5);
   
-  // 6: RESCOM-MED
+  // 6: RES/COM-MED
   Integer[][] data_6 = {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
@@ -167,7 +167,7 @@ void setupPieces() {
   inputData.add(data_6);
   inputForm.add(form_6);  
   
-  // 7: RESCOM-HI
+  // 7: RES/COM-HI
   Integer[][] data_7 = {
     { 0, 0, 0, 0 },
     { 1, 1, 1, 1 },
@@ -176,7 +176,7 @@ void setupPieces() {
   Integer[][] form_7 = {
     { 1, 1, 1, 1 },
     { 1, 1, 1, 1 },
-    { 11,2, 2,11 },
+    { 2, 2, 2, 2 },
     { 2, 2, 2, 2 } };
   inputData.add(data_7);
   inputForm.add(form_7);
@@ -188,10 +188,10 @@ void setupPieces() {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_8 = {
-    { 2, 2, 2, 2 },
-    { 2, 2, 2, 2 },
-    { 0, 2, 2, 2 },
-    { 0, 0, 2, 2 } };
+    { 0, 0, 0, 0 },
+    { 2, 2, 0, 0 },
+    { 2, 2, 2, 0 },
+    { 2, 2, 2, 0 } };
   inputData.add(data_8);
   inputForm.add(form_8);
 
@@ -203,9 +203,9 @@ void setupPieces() {
     { 0, 0, 0, 0 } };
   Integer[][] form_9 = {
     { 0, 0, 0, 0 },
-    { 0, 1, 1, 0 },
-    { 0, 1, 1, 0 },
-    { 0, 0, 0, 0 } };
+    { 2, 2,11,11 },
+    { 2, 2,11,11 },
+    { 2, 2, 2, 2 } };
   inputData.add(data_9);
   inputForm.add(form_9);
   
@@ -217,9 +217,9 @@ void setupPieces() {
     { 0, 0, 0, 0 } };
   Integer[][] form_10 = {
     { 0, 0, 0, 0 },
-    { 8, 8, 8, 8 },
-    { 1, 1, 1, 1 },
-    { 1, 1, 1, 1 }};
+    { 0, 8, 8, 0 },
+    { 0, 1, 1, 0 },
+    { 0, 0, 0, 0 }};
   inputData.add(data_10);
   inputForm.add(form_10);
 
@@ -230,9 +230,9 @@ void setupPieces() {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_11 = {
-    { 9, 9, 9, 9 },
-    { 9, 9, 9, 9 },
-    { 9, 8, 8, 9 },
+    { 1, 1, 1, 1 },
+    { 1, 1, 1, 1 },
+    { 1, 8, 8, 1 },
     { 8, 8, 8, 8 } };
   inputData.add(data_11);
   inputForm.add(form_11);
