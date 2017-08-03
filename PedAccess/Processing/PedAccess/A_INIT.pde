@@ -136,7 +136,7 @@ void amenityNetwork(PGraphics p, JSONArray amenity, JSONArray transit, JSONArray
   
   for (int i=0; i<transit.size(); i++) {
     int u = transit.getJSONObject(i).getInt("u") - gridPanU;//- gridU/2;
-    int v = transit.getJSONObject(i).getInt("v") - gridPanV;// - gridV/2;
+    int v = transit.getJSONObject(i).getInt("v") - gridPanV;//- gridV/2;
     int x = int( u*(float(p.width )/displayU)  );
     int y = int( v*(float(p.height)/displayV) );
     subtype[amenity.size() + i] = transit.getJSONObject(i).getString("subtype");
@@ -144,8 +144,8 @@ void amenityNetwork(PGraphics p, JSONArray amenity, JSONArray transit, JSONArray
   }
   
   for (int i=0; i<newPOIs.size(); i++) {
-    int u = newPOIs.getJSONObject(i).getInt("u") - gridPanU - gridU/2;
-    int v = newPOIs.getJSONObject(i).getInt("v") - gridPanV - gridV/2;
+    int u = newPOIs.getJSONObject(i).getInt("u") - gridPanU;// - gridU/2;
+    int v = newPOIs.getJSONObject(i).getInt("v") - gridPanV;// - gridV/2;
     int x = int( u*(float(p.width )/displayU)  );
     int y = int( v*(float(p.height)/displayV) );
     int z;

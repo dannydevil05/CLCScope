@@ -262,8 +262,8 @@ class Graph {
         v = JSONnetwork.getJSONObject(k).getInt("v") - gridPanV;// - gridV/2;
         type = JSONnetwork.getJSONObject(k).getString("type");
       } else {
-        u = newJSONNodes.getJSONObject(k-JSONnetwork.size()).getInt("u") - gridPanU - gridU/2;
-        v = newJSONNodes.getJSONObject(k-JSONnetwork.size()).getInt("v") - gridPanV - gridV/2;
+        u = newJSONNodes.getJSONObject(k-JSONnetwork.size()).getInt("u") - gridPanU;// - gridU/2;
+        v = newJSONNodes.getJSONObject(k-JSONnetwork.size()).getInt("v") - gridPanV;// - gridV/2;
         type = newJSONNodes.getJSONObject(k-JSONnetwork.size()).getString("type");
       }
       

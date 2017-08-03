@@ -735,13 +735,18 @@ void keyPressed() {
           showWalkAccess = toggle(showWalkAccess);
           break;
           
-        case 'k': // toggle heatmap
+        case 'k': // toggle dock
           enableDock = toggle(enableDock);
           break;
         
         case 'j': // toggle buffer
           showBuffer = toggle(showBuffer);
           break;
+          
+        case 'J': // Change mode
+          planningMode=toggle(planningMode);
+          showForm=toggle(showForm);
+          copyPlanningForm();
       }
     }
     

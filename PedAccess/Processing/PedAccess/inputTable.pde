@@ -428,8 +428,8 @@ void decodePieces() {
           
           
           JSONObject newPOI = new JSONObject();
-          newPOI.setInt("u", i*4 + 2 + gridPanU + gridU/2);
-          newPOI.setInt("v", j*4 + 2 + gridPanV + gridV/2);
+          newPOI.setInt("u", i*4 + 2 + gridPanU);// + gridU/2);
+          newPOI.setInt("v", j*4 + 2 + gridPanV);// + gridV/2);
           newPOI.setString("type", type);
           newPOI.setString("subtype", subtype);
           newPOI.setInt("b1", buildingArea.getInt("B1/m2"));
@@ -502,8 +502,8 @@ void decodePieces() {
                 }
           
                 JSONObject newNode = new JSONObject();
-                newNode.setInt("u", X + gridPanU + gridU/2);
-                newNode.setInt("v", Y + gridPanV + gridV/2);
+                newNode.setInt("u", X + gridPanU);// + gridU/2);
+                newNode.setInt("v", Y + gridPanV);// + gridV/2);
                 newNode.setInt("z", z);
                 newNode.setString("type", type);
                 newNode.setBoolean("crossing", crossing);
