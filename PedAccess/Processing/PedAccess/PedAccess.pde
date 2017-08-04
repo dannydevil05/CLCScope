@@ -133,7 +133,7 @@ void setup() {
   initUDP();
 
   // Sets up Lego Piece Data Information
-  setupPieces();
+  setupPiecesPlan();
 
   // Initialize Input Packages for CTL Data
   dataForCTL = new ClientPackage(CTL_ADDRESS, CTL_PORT, CTL_SCALE);
@@ -194,7 +194,15 @@ void draw() {
 
   // Decode pieces only if there is a change in Colortizer input
   if (changeDetected) {
-    decodePieces();
+    if (planningMode) {
+      setupPiecesPlan();
+      decodePieces();
+    }
+    if (!planningMode) {
+      setupPiecesDesign();
+      decodePieces();
+    }
+      
     if (enableDock) updateDock();
     println("New Pieces: " + newPOIs.size());
     refreshFinder(tableCanvas);
@@ -316,28 +324,52 @@ void drawLegends() {
   for (int i=0; i<3; i++) text("LEGEND", 10, 20);
 
   translate(10, 30);
-  int gridSpace = 8; // pixels
+  int gridSpace = 8; // screen pixels
   Integer[][] currentForm;
-  for (int i=0; i<16; i++) {
-    currentForm = inputForm.get(i);
-    for (int u=0; u<currentForm.length; u++) {
-      for (int v=0; v<currentForm[0].length; v++) {
-        fill(#666666);
-        if (currentForm[u][v] > 0) findFormFill(currentForm[u][v]);
-        if (i != 14) {
-          if (i < 14) rect(v*gridSpace, (i*5+u)*gridSpace, gridSpace, gridSpace);
-          //else if (i < 11) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace); //to skip drawing of certain "empty" typology
-          //else rect(v*gridSpace, ((i-2)*5+u)*gridSpace, gridSpace, gridSpace);
-          else rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
+  if (planningMode){
+    for (int i=0; i<inputForm.size(); i++) {
+      currentForm = inputForm.get(i);
+      for (int u=0; u<currentForm.length; u++) {
+        for (int v=0; v<currentForm[0].length; v++) {
+          fill(#666666);
+          if (currentForm[u][v] > 0) findFormFill(currentForm[u][v]);
+          if (i != 14) {
+            if (i < 14) {rect(v*gridSpace, (i*5+u)*gridSpace, gridSpace, gridSpace);
+            //else if (i < 11) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace); //to skip drawing of certain "empty" typology
+            //else rect(v*gridSpace, ((i-2)*5+u)*gridSpace, gridSpace, gridSpace); 
+            //text("L",v*gridSpace,(i*5+u)*gridSpace); FOR YUTING ADD LETTERS
+            }
+            else rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
+          }
         }
       }
     }
+    for (int i=0; i<pieceNames.length; i++) {
+      fill(textColor);
+      for (int j=0; j<3; j++) text(pieceNames[i], 4*gridSpace + 3*gridSpace, (i*5)*gridSpace + 10);
+      drawIcon(4*gridSpace + gridSpace, (i*5)*gridSpace, i, gridSpace, -1);
+    }
   }
-
-  for (int i=0; i<pieceNames.length; i++) {
-    fill(textColor);
-    for (int j=0; j<3; j++) text(pieceNames[i], 4*gridSpace + 3*gridSpace, (i*5)*gridSpace + 10);
-    drawIcon(4*gridSpace + gridSpace, (i*5)*gridSpace, i, gridSpace, -1);
+  if (!planningMode){
+    for (int i=0; i<14; i++) {
+      currentForm = inputForm.get(i);
+      for (int u=0; u<currentForm.length; u++) {
+        for (int v=0; v<currentForm[0].length; v++) {
+          fill(#666666);
+          if (currentForm[u][v] > 0) findFormFill(currentForm[u][v]);
+          if (i != 8 && i != 11) {
+            if (i < 8) rect(v*gridSpace, (i*5+u)*gridSpace, gridSpace, gridSpace);
+            else if (i < 11) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
+            else rect(v*gridSpace, ((i-2)*5+u)*gridSpace, gridSpace, gridSpace);
+          }
+        }
+      }
+    }
+    for (int i=0; i<amenityNames.length; i++) {
+      fill(textColor);
+      for (int j=0; j<3; j++) text(amenityNames[i], 4*gridSpace + 3*gridSpace, (i*5)*gridSpace + 10);
+      drawIcon(4*gridSpace + gridSpace, (i*5)*gridSpace, i, gridSpace, -1);
+    }
   }
   textSize(12);
   popMatrix();
@@ -362,7 +394,7 @@ void drawPlanPanel() { //draw planning bar charts
 
   //Draw %mixed-use bar chart
   drawQuantumBar();
-  drawSidePanel();
+  drawBarCharts();
   //textSize(20);
 
   //  // Walk Quality
@@ -554,7 +586,7 @@ void drawPOIs() {
     subtype = newPOIs.getJSONObject(i).getString("subtype");
     inBounds = u>0 && u<4*18 && v>0 && v<4*22-dockV;
 
-    //if (inBounds) drawIcon(int(TABLE_IMAGE_OFFSET + u*TABLE_IMAGE_WIDTH/(4.0*18)), int(STANDARD_MARGIN + v*TABLE_IMAGE_HEIGHT/(4.0*22)), subtype, 12);
+    if (inBounds) drawIcon(int(TABLE_IMAGE_OFFSET + u*TABLE_IMAGE_WIDTH/(4.0*18)), int(STANDARD_MARGIN + v*TABLE_IMAGE_HEIGHT/(4.0*22)), subtype, 12);
   }
 }
 
@@ -721,6 +753,32 @@ void drawDock() {
     textAlign(LEFT);
     drawIcon(int(x + 0.75*pieceW), int(y + 0.5*pieceH - 10), amenityFilter, 12, amenityFilter);
   }
+  // Draw Mode Dock
+  fill(#CCCCCC);
+  stroke(textColor);
+  rect(6.25*pieceW, 0.25*pieceH, 2.5*pieceW, 2.5*pieceH);
+  fill(0);
+  stroke(textColor);
+  rect(6.75*pieceW, 0.75*pieceH, 1.5*pieceW, 1.5*pieceH);
+  fill(textColor);
+  
+  // Draw Mode Dock Info
+  x = - 1.5*pieceW;
+  y = pieceH;
+  if (!planningMode) {
+    fill(textColor);
+    rect(7*pieceW, pieceH, pieceW, pieceH);
+  }
+  
+
+  x = 3.0*pieceW;
+  y = 1.1*pieceH;
+  textAlign(CENTER);
+  String mode;
+  if (planningMode) mode="PlANNING";
+  else mode="DESIGN";
+  for (int i=0; i<3; i++) text(mode, x + 6.5*pieceW, y + 0.5*pieceH);
+  textAlign(LEFT);
 
   // Draw Age Dock Border
   fill(#CCCCCC);
@@ -796,6 +854,10 @@ void updateDock() {
   if (tablePieceInput[14][20][0] >= 0) bufferRadius = 50;
   if (tablePieceInput[15][20][0] >= 0) bufferRadius = 100;
   if (tablePieceInput[16][20][0] >= 0) bufferRadius = 200;
+  
+  //Update Mode
+  if (tablePieceInput[7][20][0] >= 0) changeMode();
+  
 
 
   // Update Amenity Filter

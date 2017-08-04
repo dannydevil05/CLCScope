@@ -15,7 +15,7 @@ void loadTypologyTable(){
 }
   
 
-void calculateSpace(){
+void calculateGFA(){
   JSONObject poi;
   b1GFA=0;
   commercialGFA=0;
@@ -41,7 +41,7 @@ void calculateSpace(){
 void calculatePOP(){
   
   resPOP=b1POP=comPOP=0;
-  float POPperResArea=3.4/90.0; // people per m^2 of residential area
+  float POPperResArea=3.4/85.0; // people per m^2 of residential area
   float POPperComArea=1/20.0;
   float POPperB1Area=1/30.0;
  resPOP=int(residentialGFA*POPperResArea);
@@ -53,7 +53,7 @@ void calculatePOP(){
   
   
   
-void drawSidePanel(){
+void drawBarCharts(){
   pushMatrix();
   calculatePOP();
   
@@ -101,7 +101,7 @@ void drawQuantumBar(){
   text("USE %", STANDARD_MARGIN+0.15*barWidth, ycounter+20);
   textAlign(LEFT);
   ycounter+=TABLE_IMAGE_HEIGHT/22.0;
-  calculateSpace(); 
+  calculateGFA(); 
   float categoryGFA[]=
     { //floor space of each category
      residentialGFA,
@@ -273,7 +273,7 @@ class BarChart{
   
   
   /*
-  void drawSidePanel(){
+  void drawBarCharts(){
   pushMatrix();
   calculatePOP();
   

@@ -738,15 +738,18 @@ void keyPressed() {
         case 'k': // toggle dock
           enableDock = toggle(enableDock);
           break;
-        
+////////////////////// for WIA CASE //////////////////////////////////       
         case 'j': // toggle buffer
           showBuffer = toggle(showBuffer);
           break;
           
         case 'J': // Change mode
-          planningMode=toggle(planningMode);
-          showForm=toggle(showForm);
-          copyPlanningForm();
+          changeMode(); //switches between design and planning
+          
+          
+          if(planningMode) setupPiecesPlan();
+          if(!planningMode) setupPiecesDesign();
+          decodePieces();
       }
     }
     

@@ -437,21 +437,8 @@ void renderNetworkRaster(PGraphics graphic) {
 //              }
 //            }
 
-            if (showForm) {
+            if (true) {
               findFormFill(input, form[u+gridPanU][v+gridPanV]);
-              
-              float dU = 0;
-              float dV = 0;
-              if (faux3D) {
-                // calculates offsets for faux 3D projection mapping
-                dU = 1.125*(TABLE_IMAGE_WIDTH/displayU) * (u - projU) / projH;
-                dV = 1.125*(TABLE_IMAGE_WIDTH/displayU) * (v - projV) / projH;
-              }
-              
-              input.rect(u*gridWidth + dU, v*gridHeight + dV, gridWidth, gridHeight);
-            }
-            else if (!showForm){
-              findFormFill(input, planningForm[u+gridPanU][v+gridPanV]);
               
               float dU = 0;
               float dV = 0;

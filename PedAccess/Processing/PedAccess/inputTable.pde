@@ -64,7 +64,7 @@ String[] pieceNames = {
   
 };
 
-void setupPieces() {
+void setupPiecesPlan() {
   
   inputData = new ArrayList<Integer[][]>();
   inputForm = new ArrayList<Integer[][]>();
@@ -295,8 +295,8 @@ void setupPieces() {
 }
 
 void decodePieces() {
-  
-  clearInputData();
+  if (planningMode) clearInputFormData();
+  clearInputJSONData();
   //renderBufferMap(buffer);
   for (int i=0; i<tablePieceInput.length; i++) {
     for (int j=0; j<tablePieceInput[0].length; j++) {
@@ -310,6 +310,7 @@ void decodePieces() {
         
         // Update "Form" Layer
         Integer[][] form = inputForm.get(ID);
+        Integer[][] planningForm=inputForm.get(ID);
         for (int u=0; u<form.length; u++) {
           for (int v=0; v<form[0].length; v++) {
             
@@ -326,201 +327,251 @@ void decodePieces() {
               X = 4*i + (3-v);
               Y = 4*j + u;
             }
-          
-            this.form[gridPanU+X][gridPanV+Y] = form[v][u];
+            
+           if (showForm) this.form[gridPanU+X][gridPanV+Y] = form[v][u];
           }
         }
+        
         
         // Update Point of Interest Data
         String type = "";
         String subtype ="";
         boolean crossing = false;
         int z = 0;
-        //initialize floorspace
-        int b1=0;
-        int commercial=0;
-        int residential=0;
-        int park=0;
-        int institution=0;
-        TableRow buildingArea=typology.getRow(ID);
-        
-        if (ID !=14) {
+        if (planningMode){
+          //Planning mode calculates GFA
+          //initialize floorspace
+          int b1=0;
+          int commercial=0;
+          int residential=0;
+          int park=0;
+          int institution=0;
+          TableRow buildingArea=typology.getRow(ID);
           
-           switch (ID) {
-            case 0:
-            //b1-lo
-              type = "amenity";
-              subtype = "school";
-              break;
-            case 1:
-            //b1-med
-              type = "amenity";
-              subtype = "child_care";
-              break;
-            case 2:
-            //health
-              type = "amenity";
-              subtype = "health";
-              break;
-            case 3:
-            //res-med
-              type = "amenity";
-              subtype = "eldercare";
-              break;
-            case 4:
-            //res-hi
-              type = "amenity";
-              subtype = "retail";
-              break;
-            case 5:
-            //rescom-lo
-              type = "amenity";
-              subtype = "park";
-              //park=6400;
-              break;
-            case 6:
-            //rescom-med
-              type = "transit";
-              subtype = "bus_stop";
-              break;
-            case 7:
-            //rescom-hi
-              type = "amenity";
-              subtype = "res/com_hi";
-              break;
-            case 8:
-            //com-lo
-              type = "amenity";
-              subtype = "com_lo";
-              break;
-            case 9: 
-            // com-med
-              type = "transit";
-              subtype = "housing";
-              break;
-            case 10: 
-            // busres-low
-              type = "amenity";
-              subtype = "b1/res_lo";
-              break;
-           case 11: 
-            // busres-med
-              type = "amenity";
-              subtype = "b1/res_med";
-              break;
-           case 12: 
-            // busres-hi
-              type = "amenity";
-              subtype = "bus/res_hi";
-              break;
-           case 13: 
-            // education
-              type = "amenity";
-              subtype = "com_med";
-              break;
-           case 15: 
-            // park
-              type = "amenity";
-              subtype = "park";
-              break;            
-        
-           }       
+          if (ID !=14) {
+            
+             switch (ID) {
+              case 0:
+              //b1-lo
+                type = "amenity";
+                subtype = "school";
+                break;
+              case 1:
+              //b1-med
+                type = "amenity";
+                subtype = "child_care";
+                break;
+              case 2:
+              //health
+                type = "amenity";
+                subtype = "health";
+                break;
+              case 3:
+              //res-med
+                type = "amenity";
+                subtype = "eldercare";
+                break;
+              case 4:
+              //res-hi
+                type = "amenity";
+                subtype = "retail";
+                break;
+              case 5:
+              //rescom-lo
+                type = "amenity";
+                subtype = "park";
+                break;
+              case 6:
+              //rescom-med
+                type = "transit";
+                subtype = "bus_stop";
+                break;
+              case 7:
+              //rescom-hi
+                type = "amenity";
+                subtype = "res/com_hi";
+                break;
+              case 8:
+              //com-lo
+                type = "amenity";
+                subtype = "com_lo";
+                break;
+              case 9: 
+              // com-med
+                type = "transit";
+                subtype = "housing";
+                break;
+              case 10: 
+              // busres-low
+                type = "amenity";
+                subtype = "b1/res_lo";
+                break;
+             case 11: 
+              // busres-med
+                type = "amenity";
+                subtype = "b1/res_med";
+                break;
+             case 12: 
+              // busres-hi
+                type = "amenity";
+                subtype = "bus/res_hi";
+                break;
+             case 13: 
+              // education
+                type = "amenity";
+                subtype = "com_med";
+                break;
+             case 15: 
+              // park
+                type = "amenity";
+                subtype = "park";
+                break;            
           
-          
-          JSONObject newPOI = new JSONObject();
-          newPOI.setInt("u", i*4 + 2 + gridPanU);// + gridU/2);
-          newPOI.setInt("v", j*4 + 2 + gridPanV);// + gridV/2);
-          newPOI.setString("type", type);
-          newPOI.setString("subtype", subtype);
-          newPOI.setInt("b1", buildingArea.getInt("B1/m2"));
-          newPOI.setInt("commercial", buildingArea.getInt("Commercial/m2"));
-          newPOI.setInt("residential", buildingArea.getInt("Residential/m2"));
-          newPOI.setInt("institution", buildingArea.getInt("Institution/m2"));
-          newPOI.setInt("park", buildingArea.getInt("Park Space/m2"));
-          newPOIs.setJSONObject(newPOIs.size(), newPOI);
-          
-        }
-        
-       else if (false) {
-        
-          // Update Pedestrian Network
-          Integer[][] data = inputData.get(ID);
-          for (int u=0; u<data.length; u++) {
-            for (int v=0; v<data[0].length; v++) {
-              
-              if (rotation == 0) {
-                X = 4*i + u;
-                Y = 4*j + v;
-              } else if (rotation == 1) {
-                X = 4*i + v;
-                Y = 4*j + (3-u);
-              } else if (rotation == 2) {
-                X = 4*i + (3-u);
-                Y = 4*j + (3-v);
-              } else if (rotation == 3) {
-                X = 4*i + (3-v);
-                Y = 4*j + u;
-              }
-              
-              
-            // Data Type
-            /* 0 = Vehicle Road Network
-             * 1 = Surface Level Pedestrian Pathways
-             * 2 = Surface Level Pedestrian Street Crossing
-             * 3 = Covered Linkway Redestrian Pathway
-             * 4 = Ground-Bridge-Ground Street Crossing
-             * 5 = 2nd Level Pedestrian Causeway
-             */
- 
-              if (data[v][u] > 0) {
-                switch (data[v][u]) {
-                  case 1:
-                    type = "ped_ground";
-                    crossing = false;
-                    z = 0;
-                    break;
-                  case 2:
-                    type = "ped_xing";
-                    crossing = true;
-                    z = 0;
-                    break;
-                  case 3:
-                    type = "ped_linkway";
-                    crossing = false;
-                    z = 0;
-                    break;
-                  case 4:
-                    type = "ped_bridge";
-                    crossing = true;
-                    z = 1;
-                    break;
-                  case 5:
-                    type = "ped_2nd";
-                    crossing = false;
-                    z = 2;
-                    break;
-                }
-          
-                JSONObject newNode = new JSONObject();
-                newNode.setInt("u", X + gridPanU);// + gridU/2);
-                newNode.setInt("v", Y + gridPanV);// + gridV/2);
-                newNode.setInt("z", z);
-                newNode.setString("type", type);
-                newNode.setBoolean("crossing", crossing);
-                newNodes.setJSONObject(newNodes.size(), newNode);
-                
-                //println(newNode.getInt("u"), newNode.getInt("v"));
-              }
-              
-  //            if (ID >= 0 && ID <= 6) {
-  //              this.facilities[gridPanU+X][gridPanV+Y] = data[v][u];
-  //            } else if (ID ==8 || ID == 9) {
-  //              this.market[gridPanU+X][gridPanV+Y] = data[v][u];
-  //            } 
-  
-            }
+             }       
+            
+            
+            JSONObject newPOI = new JSONObject();
+            newPOI.setInt("u", i*4 + 2 + gridPanU);// + gridU/2);
+            newPOI.setInt("v", j*4 + 2 + gridPanV);// + gridV/2);
+            newPOI.setString("type", type);
+            newPOI.setString("subtype", subtype);
+            newPOI.setInt("b1", buildingArea.getInt("B1/m2"));
+            newPOI.setInt("commercial", buildingArea.getInt("Commercial/m2"));
+            newPOI.setInt("residential", buildingArea.getInt("Residential/m2"));
+            newPOI.setInt("institution", buildingArea.getInt("Institution/m2"));
+            newPOI.setInt("park", buildingArea.getInt("Park Space/m2"));
+            newPOIs.setJSONObject(newPOIs.size(), newPOI);
+            
           }
         }
+        else if (!planningMode){
+          if (ID >= 0 && ID <= 6 || ID == 9) {
+            
+            switch (ID) {
+              case 0:
+                type = "amenity";
+                subtype = "school";
+                break;
+              case 1:
+                type = "amenity";
+                subtype = "child_care";
+                break;
+              case 2:
+                type = "amenity";
+                subtype = "health";
+                break;
+              case 3:
+                type = "amenity";
+                subtype = "eldercare";
+                break;
+              case 4:
+                type = "amenity";
+                subtype = "retail";
+                break;
+              case 5:
+                type = "amenity";
+                subtype = "park";
+                break;
+              case 6:
+                type = "transit";
+                subtype = "bus_stop";
+                break;
+              case 9: // Transit
+                type = "transit";
+                subtype = "housing";
+                break;
+            }
+            
+            JSONObject newPOI = new JSONObject();
+            newPOI.setInt("u", i*4 + 2 + gridPanU);//+ gridU/2);
+            newPOI.setInt("v", j*4 + 2 + gridPanV);// + gridV/2);
+            newPOI.setString("type", type);
+            newPOI.setString("subtype", subtype);
+            newPOIs.setJSONObject(newPOIs.size(), newPOI);
+            
+          }
+          
+          else if (ID == 7 || ID == 10 || ID == 12 || ID == 13) {
+          
+            // Update Pedestrian Network
+            Integer[][] data = inputData.get(ID);
+            for (int u=0; u<data.length; u++) {
+              for (int v=0; v<data[0].length; v++) {
+                
+                if (rotation == 0) {
+                  X = 4*i + u;
+                  Y = 4*j + v;
+                } else if (rotation == 1) {
+                  X = 4*i + v;
+                  Y = 4*j + (3-u);
+                } else if (rotation == 2) {
+                  X = 4*i + (3-u);
+                  Y = 4*j + (3-v);
+                } else if (rotation == 3) {
+                  X = 4*i + (3-v);
+                  Y = 4*j + u;
+                }
+                
+                
+              // Data Type
+              /* 0 = Vehicle Road Network
+               * 1 = Surface Level Pedestrian Pathways
+               * 2 = Surface Level Pedestrian Street Crossing
+               * 3 = Covered Linkway Redestrian Pathway
+               * 4 = Ground-Bridge-Ground Street Crossing
+               * 5 = 2nd Level Pedestrian Causeway
+               */
+   
+                if (data[v][u] > 0) {
+                  switch (data[v][u]) {
+                    case 1:
+                      type = "ped_ground";
+                      crossing = false;
+                      z = 0;
+                      break;
+                    case 2:
+                      type = "ped_xing";
+                      crossing = true;
+                      z = 0;
+                      break;
+                    case 3:
+                      type = "ped_linkway";
+                      crossing = false;
+                      z = 0;
+                      break;
+                    case 4:
+                      type = "ped_bridge";
+                      crossing = true;
+                      z = 1;
+                      break;
+                    case 5:
+                      type = "ped_2nd";
+                      crossing = false;
+                      z = 2;
+                      break;
+                  }
+            
+                  JSONObject newNode = new JSONObject();
+                  newNode.setInt("u", X + gridPanU);// + gridU/2);
+                  newNode.setInt("v", Y + gridPanV);// + gridV/2);
+                  newNode.setInt("z", z);
+                  newNode.setString("type", type);
+                  newNode.setBoolean("crossing", crossing);
+                  newNodes.setJSONObject(newNodes.size(), newNode);
+                  
+                  //println(newNode.getInt("u"), newNode.getInt("v"));
+                }
+                
+    //            if (ID >= 0 && ID <= 6) {
+    //              this.facilities[gridPanU+X][gridPanV+Y] = data[v][u];
+    //            } else if (ID ==8 || ID == 9) {
+    //              this.market[gridPanU+X][gridPanV+Y] = data[v][u];
+    //            } 
+    
+              }
+            }
+          }
+        }         
       }
     }
   }
@@ -529,7 +580,7 @@ void decodePieces() {
   
 }
 
-void clearInputData() {
+void clearInputFormData() {
   for (int u=0; u<gridU; u++) {
     for (int v=0; v<gridV; v++) {
       this.form[u][v] = 0;
@@ -537,6 +588,11 @@ void clearInputData() {
       this.market[u][v] = 0;
     }
   }
+  //newPOIs = new JSONArray();
+  //newNodes = new JSONArray();
+}
+
+void clearInputJSONData(){
   newPOIs = new JSONArray();
   newNodes = new JSONArray();
 }

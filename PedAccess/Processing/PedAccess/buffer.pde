@@ -14,7 +14,6 @@ void initBuffer(){
 void renderBufferLayer(PGraphics a){
   float unitDist=20.0/gridWidth;
   boolean textClash=false;
-  //int bufferMap[][]=new int[tablePieceInput.length][tablePieceInput[0].length];
   a.beginDraw();
   a.clear();
   initBufferMatrices();
@@ -23,8 +22,8 @@ void renderBufferLayer(PGraphics a){
     for (int j=0; j<tablePieceInput[0].length; j++) {
       int ID = tablePieceInput[i][j][0];
       if (ID ==0 || ID==1) {
-        a.stroke(0);
-        a.fill(0,0,255,50);
+        a.stroke(0,0,150);
+        a.fill(0,0,255,70);
         a.rectMode(RADIUS);
         a.rect((4*i+2)*gridWidth,(4*j+2)*gridHeight,(bufferRadius+40)/unitDist,(bufferRadius+40)/unitDist);
       }
