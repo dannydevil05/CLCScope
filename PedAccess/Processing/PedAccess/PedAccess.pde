@@ -29,6 +29,7 @@
 
 String systemOS;
 int time =millis();
+int dialogTime=0;
 
 // Library needed for ComponentAdapter()
 import java.awt.event.*;
@@ -289,6 +290,9 @@ void draw() {
     changeClock--;
     if (changeClock == 0) changeDetected = true;
   }
+  if (millis()-dialogTime < 2000){
+    image(dialog,0,0);
+  }
 
   // Exports table Graphic to Projector
   translate(20, 0);
@@ -305,6 +309,7 @@ void draw() {
     //println(margin.width + projector.width, margin.height, projector.height);
   }
   //println("changeClock " + changeClock);
+  
 }
 
 void drawLegends() {
@@ -749,7 +754,8 @@ void drawDock() {
     fill(textColor);
     rect(pieceW, pieceH, pieceW, pieceH);
     textAlign(RIGHT);
-    text(pieceNames[amenityFilter], x + 0.5*pieceW, y + 0.5*pieceH);
+    if (planningMode) text(pieceNames[amenityFilter], x + 0.5*pieceW, y + 0.5*pieceH);
+    else if (!planningMode) text(amenityNames[amenityFilter], x + 0.5*pieceW, y + 0.5*pieceH);
     textAlign(LEFT);
     drawIcon(int(x + 0.75*pieceW), int(y + 0.5*pieceH - 10), amenityFilter, 12, amenityFilter);
   }
@@ -793,31 +799,37 @@ void drawDock() {
   x = 12.0*pieceW;
   y = 1.1*pieceH;
   textAlign(CENTER);
-  for (int i=0; i<3; i++) text("AGE", x + 0.5*pieceW, y + 0.5*pieceH);
+  String label="";
+  if (planningMode) label="BUFFER";
+  else if (!planningMode) label="AGE";
+  for (int i=0; i<3; i++) text(label, x + 0.5*pieceW, y + 0.5*pieceH);
   textAlign(LEFT);
 
   x = 14.0*pieceW;
   y = 0.1*pieceH;
-  String age = "";
+  String cat = "";
   fill(background);
 
   for (int k=0; k<3; k++) {
     textAlign(CENTER);
     switch (k) {
     case 0:
-      age = "0-16";
+      if (planningMode) cat="50m";
+      else cat = "0-16";
       x = 14.0*pieceW;
       break;
     case 1:
-      age = "17-64";
+      if (planningMode) cat="100m";
+      else cat = "17-64";
       x = 15.0*pieceW;
       break;
     case 2:
-      age = "65+";
+      if (planningMode) cat="200m" ;
+      else cat = "65+";
       x = 16.0*pieceW;
       break;
     }
-    for (int i=0; i<3; i++) text(age, x + 0.5*pieceW, y + 0.5*pieceH);
+    for (int i=0; i<3; i++) text(cat, x + 0.5*pieceW, y + 0.5*pieceH);
     textAlign(LEFT);
   }
 

@@ -48,7 +48,7 @@ String[] pieceNames = {
   
   "B1-LO",
   "B1-MED",
-  "HEALTHCARE",
+  "B2-LO",
   "RES-MED",
   "RES-HI",
   "RES/COM-LO",
@@ -59,7 +59,7 @@ String[] pieceNames = {
   "B1/RES-LO",
   "B1/RES-MED",
   "B1/RES-HI",
-  "EDUCATIONAL",
+  "B2-HI",
   "PARK"
   
 };
@@ -97,17 +97,17 @@ void setupPiecesPlan() {
   inputData.add(data_3);
   inputForm.add(form_3);
   
-  // 2: Healthcare
+  // 2: B2-LO
   Integer[][] data_2 = {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
     { 0, 2, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_2 = {
-    { 0, 0, 3, 0 },
-    { 0, 3, 3, 3 },
-    { 0, 0, 3, 0 },
-    { 0, 0, 0, 0 } };
+    { 0, 0, 0, 0 },
+    { 0, 0, 0, 0 },
+    { 0, 8, 8, 0 },
+    { 8, 8, 8, 8 } };
   inputData.add(data_2);
   inputForm.add(form_2);
   
@@ -251,17 +251,17 @@ void setupPiecesPlan() {
   inputData.add(data_12);
   inputForm.add(form_12);
   
-  // 13: EDUCATION
+  // 13: B2-MED
   Integer[][] data_13 = {
     { 0, 2, 0, 0 },
     { 2, 2, 2, 2 },
     { 0, 2, 0, 0 },
     { 0, 2, 0, 0 } };
   Integer[][] form_13 = {
-    { 0, 6, 0, 0 },
-    { 6, 6, 6, 6 },
-    { 0, 6, 0, 0 },
-    { 0, 6, 0, 0 } };
+    { 0, 8, 8, 0 },
+    { 0, 8, 8, 0 },
+    { 8, 8, 8, 8 },
+    { 8, 8, 8, 8 } };
   inputData.add(data_13);
   inputForm.add(form_13);
   

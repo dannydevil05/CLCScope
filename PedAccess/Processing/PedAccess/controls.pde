@@ -534,6 +534,7 @@ void keyPressed() {
       case 'p': // "Print Screenshot (p)"   // 1
         printScreen();
         switched = true;
+        renderScreenshotDialog();
         break;
   
       case 'l': // "Align Left (l)",        // 7
@@ -744,12 +745,11 @@ void keyPressed() {
           break;
           
         case 'J': // Change mode
-          changeMode(); //switches between design and planning
-          
-          
+          changeMode(); //switches between design and planning      
           if(planningMode) setupPiecesPlan();
           if(!planningMode) setupPiecesDesign();
           decodePieces();
+          break;
       }
     }
     
@@ -933,9 +933,16 @@ void nextModeIndex() {
 
 // Prints Screen to File
 void printScreen() {
-  String location = "export/" + fileName + "_" + int(gridSize*1000) + ".png";
-  save(location);
-  println("File saved to " + location);
+  //JLD default printscreen
+  //String location = "export/" + fileName + "_" + int(gridSize*1000) + ".png";
+  //WIA printscreen
+  String mode="";
+  if (planningMode) mode = "planning";
+  else mode = "design";
+  String Screenshot = "export/" + fileName + "_" + mode + "#####.png";
+  //save(location);
+  saveFrame(Screenshot);
+  println("File saved to " + Screenshot);
 }
 
 void setDeliveries(int button) {
@@ -1628,4 +1635,25 @@ void key_X() {
   initPath(pFinder, A, B);
   pFinderGrid_Viz(tableCanvas);
 }
+
+PGraphics dialog;
+/***************DANNY'S IMPLEMENTATION**********************/
+void renderScreenshotDialog(){
+  dialogTime=millis();
+  textSize(16);
+  String dialogText = "Screenshot captured and saved to PedAccess/export";
+  
+  dialog = createGraphics(displayWidth,displayHeight);
+  dialog.beginDraw();
+  dialog.clear();
+  dialog.fill(0);
+  dialog.stroke(255);
+  dialog.rectMode(CENTER);
+  dialog.rect(displayWidth/2,displayHeight/2,textWidth(dialogText)+STANDARD_MARGIN,40,7);
+  dialog.fill(textColor);
+  dialog.textAlign(CENTER);
+  dialog.text(dialogText,dialog.width/2,dialog.height/2+4);
+  dialog.endDraw();
+}
+  
 

@@ -32,7 +32,7 @@ void renderBufferLayer(PGraphics a){
   for (int i=0; i<bufferMap.length; i++) {
     for (int j=0; j<bufferMap[0].length; j++) {
       hasConflict[i][j]=checkIfConflict(tablePieceInput[i][j][0], bufferMap[i][j]);
-      if (bufferMap[i][j]==0 ) {
+      if (bufferMap[i][j] == 0 ) {
         //a.fill(0,0,200,70);
         //a.stroke(0,0,200);
         a.noFill();
@@ -40,14 +40,14 @@ void renderBufferLayer(PGraphics a){
         int passedMillis=millis()-time;
         int offDuration=500;
         int onDuration=500;
-        if (hasConflict[i][j]==true && passedMillis>=offDuration) {
+        if (hasConflict[i][j] == true && passedMillis >= offDuration) {
           //Draws a flashing red box if conflict is true
           //Box turns on for 0.5s
           //and off for 0.5s
           textClash=true;
           a.fill(200,0,0);
           a.stroke(200,0,0);
-          if (passedMillis>=(offDuration+onDuration)) time=millis();
+          if (passedMillis >= (offDuration+onDuration)) time = millis();
         }
       }      
       else {

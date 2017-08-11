@@ -122,7 +122,7 @@ void drawQuantumBar(){
       break;
     case 2:
       fill(purpleBrick);
-      barLabel="B1";
+      barLabel="INDUS";
       break;
     case 3:
       fill(lightblueBrick);
@@ -166,6 +166,11 @@ class BarChart{
   String label[]=new String[2];
   
   BarChart(){
+  }
+  
+  BarChart(int var, int max){
+    curVar=var;
+    maxVar=max;
   }
   
   void initBar(){
