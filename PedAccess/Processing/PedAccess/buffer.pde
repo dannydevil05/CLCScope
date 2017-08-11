@@ -21,7 +21,7 @@ void renderBufferLayer(PGraphics a){
   for (int i=0; i<tablePieceInput.length; i++) {
     for (int j=0; j<tablePieceInput[0].length; j++) {
       int ID = tablePieceInput[i][j][0];
-      if (ID ==0 || ID==1) {
+      if (ID ==0 || ID==1 || ID==2 || ID==13) {
         a.stroke(0,0,150);
         a.fill(0,0,255,70);
         a.rectMode(RADIUS);
@@ -72,7 +72,8 @@ void renderBufferLayer(PGraphics a){
       int radInGrid=bufferRadius/80+1; 
       for (int i = 0; i < tablePieceInput.length; i++) {
         for (int j = 0; j < tablePieceInput[0].length; j++) {
-          if (tablePieceInput[i][j][0] == 0 || tablePieceInput[i][j][0]==1) {
+          int ID=tablePieceInput[i][j][0] ;
+          if (ID == 0 || ID ==1 || ID == 2 || ID == 13 ) {
             for (int u=-radInGrid;u<=radInGrid;u++){
               for (int v=-radInGrid;v<=radInGrid;v++){
                 if ((i+u)>=0 && (i+u)<=17 && (j+v)>=0 && (j+v)<=21){
@@ -100,7 +101,7 @@ void renderBufferLayer(PGraphics a){
     // Rules:
     // distance(B1,Residential)>100m
     if (existingBuffer==0 ){
-      if (building>1 && building<16) return true;
+      if (building>2 && building<16 && building!=13) return true;
       else return false;
     }
     else return false;
