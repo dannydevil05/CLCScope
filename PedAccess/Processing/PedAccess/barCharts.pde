@@ -1,13 +1,10 @@
 //Initialize parameters
 // GFA of mixed uses
-int b1GFA,commercialGFA,residentialGFA,parkGFA,institutionGFA; 
-int resPOP,b1POP,comPOP;
+int b1GFA,b2GFA,commercialGFA,residentialGFA,parkGFA,institutionGFA; 
+int resPOP,b1POP,b2POP,comPOP;
 
-int prevPark,prevPOP=0;
+
 int transitionRate=10;
-//transition pixels
-int parkTransition=0; 
-int popTransition=0;
 
 Table typology;
 void loadTypologyTable(){
@@ -18,6 +15,7 @@ void loadTypologyTable(){
 void calculateGFA(){
   JSONObject poi;
   b1GFA=0;
+  b2GFA=0;
   commercialGFA=0;
   residentialGFA=0;
   parkGFA=0;
@@ -25,11 +23,13 @@ void calculateGFA(){
   for (int i=0; i<newPOIs.size (); i++) {
     poi = newPOIs.getJSONObject(i);
     int currentB1 = newPOIs.getJSONObject(i).getInt("b1");
+    int currentB2 = newPOIs.getJSONObject(i).getInt("b2");
     int currentCommercial= newPOIs.getJSONObject(i).getInt("commercial");
     int currentResidential= newPOIs.getJSONObject(i).getInt("residential");
     int currentPark=newPOIs.getJSONObject(i).getInt("park");
     int currentInstitution=newPOIs.getJSONObject(i).getInt("institution");
     b1GFA+=currentB1;
+    b2GFA+=currentB2;
     commercialGFA+=currentCommercial;
     residentialGFA+=currentResidential;
     parkGFA+=currentPark;
@@ -44,9 +44,11 @@ void calculatePOP(){
   float POPperResArea=3.4/85.0; // people per m^2 of residential area
   float POPperComArea=1/20.0;
   float POPperB1Area=1/30.0;
+  float POPperB2Area=1/30.0;  
  resPOP=int(residentialGFA*POPperResArea);
  comPOP=int(commercialGFA*POPperComArea);
  b1POP=int(b1GFA*POPperB1Area);
+ b2POP=int(b2GFA*POPperB2Area);
 }
   
   
@@ -65,23 +67,15 @@ void drawBarCharts(){
 
   
   //Draw employment population
-  color lightgreen=#bcff00; 
-  color darkgreen=#16451c;
   translate(-barWidth*0.8, 0);
   employmentChart.initBar();
-  employmentChart.setColor(darkgreen,lightgreen);
-  employmentChart.setVar (b1POP+comPOP,5000);
+  employmentChart.setVar (b1POP+comPOP+b2POP,5000);
   employmentChart.drawThisChart();
      
     
  //Draw Residential Population
-  color lightgrey=#c1d6da;
-  color darkgrey=#1c1919;
-  color lightbrown=#f8de7e;
-  color darkbrown=#7c5102;
   translate(-barWidth*2.0/3.0, 0);
   residentChart.initBar();
-  residentChart.setColor(lightgrey,darkgrey);
   residentChart.setVar(resPOP,5000);
   residentChart.drawThisChart();
 
@@ -107,13 +101,14 @@ void drawQuantumBar(){
      residentialGFA,
      commercialGFA,
      b1GFA,
+     b2GFA,
      institutionGFA
    };
   String barLabel="";
-  for (int i=0; i<4;i++){
+  for (int i=0; i<5;i++){
     switch (i){
     case 0:
-      fill(creamBrick);
+      fill(tanBrick);
       barLabel="RES";
       break;
     case 1:
@@ -122,14 +117,18 @@ void drawQuantumBar(){
       break;
     case 2:
       fill(purpleBrick);
-      barLabel="INDUS";
+      barLabel="B1";
       break;
     case 3:
+      fill(lavenderBrick);
+      barLabel="B2";
+      break;
+    case 4:
       fill(lightblueBrick);
       barLabel="INST";
       break;
     }
-    float ratio=categoryGFA[i]/(categoryGFA[0]+categoryGFA[1]+categoryGFA[2]+categoryGFA[3]);
+    float ratio=categoryGFA[i]/(categoryGFA[0]+categoryGFA[1]+categoryGFA[2]+categoryGFA[3]+categoryGFA[4]);
     
     if (ratio!=0){
       rect(STANDARD_MARGIN, ycounter, 0.3*barWidth, ratio*chartHeight);

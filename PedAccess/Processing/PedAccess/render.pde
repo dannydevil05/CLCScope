@@ -15,17 +15,17 @@ int tableHeight = int(tableWidth * float(displayV)/displayU);
 String align = "RIGHT";
 boolean waiting_blink = true;
 
-color tanBrick =   #FFEA00;
+color tanBrick =   #EF9C35;//#FFEA00;
 color blueBrick =  #0000FF;
 color redBrick =   #FF0000;
 color blackBrick = #000000;
 color greenBrick = #00FF00;
 color whiteBrick = #FFFFFF;
 color brownBrick = #8B5F07;
-color purpleBrick= #87087c;
+color purpleBrick= #AD0163;
 color creamBrick= #ffe299;
-color pinkBrick= #ff00db;
-color lightblueBrick= #77fcff;
+color lavenderBrick= #CAA6CE;
+color lightblueBrick= #77FCFF;
 color walmart_yellow = #ffc220;
 color walmart_light_green = #76c043;
 color walmart_dark_blue = #004c91;
@@ -479,7 +479,7 @@ void renderNetworkRaster(PGraphics graphic) {
       } else if (ID == 9){
         input.fill(creamBrick);
       } else if (ID == 10){
-        input.fill(pinkBrick);
+        input.fill(lavenderBrick);
       } else if (ID == 11){
         input.fill(lightblueBrick);
       }
@@ -507,7 +507,7 @@ void renderNetworkRaster(PGraphics graphic) {
       } else if (ID == 9){
         fill(creamBrick);
       } else if (ID == 10){
-        fill(pinkBrick);
+        fill(lavenderBrick);
       } else if (ID == 11){
         fill(lightblueBrick);
       }

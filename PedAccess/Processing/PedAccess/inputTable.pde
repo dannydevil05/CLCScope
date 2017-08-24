@@ -20,7 +20,7 @@ ArrayList<Integer[][]> inputForm;
 // 7 = brown brick
 // 8 = purple brick
 // 9 = cream brick
-//10 = pink brick 
+//10 = lavender brick 
 //11 = light blue brick
   
   // Data Type
@@ -77,8 +77,8 @@ void setupPiecesPlan() {
     { 0, 0, 0, 0 } };
   Integer[][] form_0 = {
     { 0, 0, 0, 0 },
-    { 8, 8, 8, 8 },
-    { 8, 8, 8, 8 },
+    {10,10,10,10 },
+    {10,10,10,10 },
     { 0, 0, 0, 0 } };
   inputData.add(data_0);
   inputForm.add(form_0);
@@ -90,10 +90,10 @@ void setupPiecesPlan() {
     { 0, 3, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_3 = {
-    { 10,10,10,10 },
-    { 10,10,10,10 },
-    { 0, 0, 8, 8 },
-    { 0, 0, 8, 8 } };
+    {10,10,10,10 },
+    {10,10,10,10 },
+    { 0, 0,10,10 },
+    { 0, 0,10,10 } };
   inputData.add(data_3);
   inputForm.add(form_3);
   
@@ -342,6 +342,7 @@ void decodePieces() {
           //Planning mode calculates GFA
           //initialize floorspace
           int b1=0;
+          int b2=0;
           int commercial=0;
           int residential=0;
           int park=0;
@@ -436,6 +437,7 @@ void decodePieces() {
             newPOI.setString("type", type);
             newPOI.setString("subtype", subtype);
             newPOI.setInt("b1", buildingArea.getInt("B1/m2"));
+            newPOI.setInt("b2", buildingArea.getInt("B2/m2"));
             newPOI.setInt("commercial", buildingArea.getInt("Commercial/m2"));
             newPOI.setInt("residential", buildingArea.getInt("Residential/m2"));
             newPOI.setInt("institution", buildingArea.getInt("Institution/m2"));

@@ -84,7 +84,7 @@ boolean showVehicle = false;
 
 boolean enableDock = true;
 
-boolean planningMode=true;
+boolean planningMode=true; //true for planning mode, false for design mode
 
 boolean sketchFullScreen() {
   return true;
@@ -168,10 +168,17 @@ void setup() {
   wmt_logo = loadImage("Walmart_Spark.png");
   
   //init bar charts
+  color lightgreen=#bcff00; 
+  color darkgreen=#16451c;
   employmentChart=new BarChart();
   employmentChart.setLabel("EMPLOY. POP");
+  employmentChart.setColor(darkgreen,lightgreen);
+  
+  color lightgrey=#c1d6da;
+  color darkgrey=#1c1919;
   residentChart=new BarChart();
   residentChart.setLabel ("RESID. POP");
+  residentChart.setColor(lightgrey,darkgrey);
 
   systemOS = System.getProperty("os.name").substring(0, 3);
   println(systemOS);
