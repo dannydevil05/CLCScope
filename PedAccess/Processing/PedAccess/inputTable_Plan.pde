@@ -22,6 +22,7 @@ ArrayList<Integer[][]> inputForm;
 // 9 = cream brick
 //10 = lavender brick 
 //11 = light blue brick
+//12 = turquoise brick
   
   // Data Type
   /* 0 = Vehicle Road Network
@@ -32,20 +33,7 @@ ArrayList<Integer[][]> inputForm;
    * 5 = 2nd Level Pedestrian Causeway
    */
    
-String[] pieceNames = {
-  /*"SCHOOL",
-  "CHILDCARE",
-  "HEALTHCARE",
-  "ELDERCARE",
-  "RETAIL",
-  "PARK",
-  "TRANSIT STOP",
-  "PED. PATH",
-  "HOUSING",
-  "PED. BRIDGE",
-  "ELEV. PATH",
-  "PED-X'ING"*/
-  
+String[] pieceNames = {  
   "B1-LO",
   "B1-MED",
   "B2-LO",
@@ -59,9 +47,26 @@ String[] pieceNames = {
   "B1/RES-LO",
   "B1/RES-MED",
   "B1/RES-HI",
-  "B2-HI",
+  "B2-MED",
   "PARK"
   
+};
+
+String[] density= {
+  "L",
+  "M",
+  "L",
+  "M",
+  "H",
+  "L",
+  "M",
+  "H",
+  "L",
+  "M",
+  "L",
+  "M",
+  "H",
+  "M"
 };
 
 void setupPiecesPlan() {
@@ -76,10 +81,10 @@ void setupPiecesPlan() {
     { 0, 1, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_0 = {
-    { 0, 0, 0, 0 },
     {10,10,10,10 },
     {10,10,10,10 },
-    { 0, 0, 0, 0 } };
+    {10,10,10,10 },
+    {10,10,10,10 } };
   inputData.add(data_0);
   inputForm.add(form_0);
   
@@ -92,8 +97,8 @@ void setupPiecesPlan() {
   Integer[][] form_3 = {
     {10,10,10,10 },
     {10,10,10,10 },
-    { 0, 0,10,10 },
-    { 0, 0,10,10 } };
+    {10,10,10,10 },
+    {10,10,10,10 } };
   inputData.add(data_3);
   inputForm.add(form_3);
   
@@ -104,9 +109,9 @@ void setupPiecesPlan() {
     { 0, 2, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_2 = {
-    { 0, 0, 0, 0 },
-    { 0, 0, 0, 0 },
-    { 0, 8, 8, 0 },
+    { 8, 8, 8, 8 },
+    { 8, 8, 8, 8 },
+    { 8, 8, 8, 8 },
     { 8, 8, 8, 8 } };
   inputData.add(data_2);
   inputForm.add(form_2);
@@ -118,10 +123,10 @@ void setupPiecesPlan() {
     { 0, 4, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_1 = {
-    { 0, 0, 0, 0 },
-    { 0, 3, 3, 0 },
-    { 0, 1, 1, 1 },
-    { 0, 0, 0, 0 } };
+    { 1, 1, 1, 1 },
+    { 1, 1, 1, 1 },
+    { 1, 1, 1, 1 },
+    { 1, 1, 1, 1 } };
   inputData.add(data_1);
   inputForm.add(form_1);
   
@@ -132,8 +137,8 @@ void setupPiecesPlan() {
     { 0, 7, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_4 = {
-    { 9, 9, 1, 1 },
-    { 9, 9, 1, 1 },
+    { 1, 1, 1, 1 },
+    { 1, 1, 1, 1 },
     { 1, 1, 1, 1 },
     { 1, 1, 1, 1 } };
   inputData.add(data_4);
@@ -146,10 +151,10 @@ void setupPiecesPlan() {
     { 0, 6, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_5 = {
-    { 0, 0, 0, 0 },
-    { 0, 1, 1, 0 },
-    { 0, 2, 2, 0 },
-    { 0, 0, 0, 0 } };
+    {11,11,11,11 },
+    {11,11,11,11 },
+    {11,11,11,11 },
+    {11,11,11,11 } };
   inputData.add(data_5);
   inputForm.add(form_5);
   
@@ -160,10 +165,10 @@ void setupPiecesPlan() {
     { 0, 5, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_6 = {
-    { 0, 6, 0, 0 },
-    { 0, 0, 0, 0 },
-    { 0, 0, 0, 0 },
-    { 0, 0, 0, 0 } };
+    {11,11,11,11 },
+    {11,11,11,11 },
+    {11,11,11,11 },
+    {11,11,11,11 } };
   inputData.add(data_6);
   inputForm.add(form_6);  
   
@@ -174,10 +179,10 @@ void setupPiecesPlan() {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_7 = {
-    { 1, 1, 1, 1 },
-    { 1, 1, 1, 1 },
-    { 2, 2, 2, 2 },
-    { 2, 2, 2, 2 } };
+    {11,11,11,11 },
+    {11,11,11,11 },
+    {11,11,11,11 },
+    {11,11,11,11 } };
   inputData.add(data_7);
   inputForm.add(form_7);
 
@@ -188,10 +193,10 @@ void setupPiecesPlan() {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_8 = {
-    { 0, 0, 0, 0 },
-    { 2, 2, 0, 0 },
-    { 2, 2, 2, 0 },
-    { 2, 2, 2, 0 } };
+    { 2, 2, 2, 2 },
+    { 2, 2, 2, 2 },
+    { 2, 2, 2, 2 },
+    { 2, 2, 2, 2 } };
   inputData.add(data_8);
   inputForm.add(form_8);
 
@@ -202,9 +207,9 @@ void setupPiecesPlan() {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_9 = {
-    { 0, 0, 0, 0 },
-    { 2, 2,11,11 },
-    { 2, 2,11,11 },
+    { 2, 2, 2, 2 },
+    { 2, 2, 2, 2 },
+    { 2, 2, 2, 2 },
     { 2, 2, 2, 2 } };
   inputData.add(data_9);
   inputForm.add(form_9);
@@ -216,10 +221,10 @@ void setupPiecesPlan() {
     { 4, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_10 = {
-    { 0, 0, 0, 0 },
-    { 0, 8, 8, 0 },
-    { 0, 1, 1, 0 },
-    { 0, 0, 0, 0 }};
+    {12,12,12,12 },
+    {12,12,12,12 },
+    {12,12,12,12 },
+    {12,12,12,12 } };
   inputData.add(data_10);
   inputForm.add(form_10);
 
@@ -230,10 +235,10 @@ void setupPiecesPlan() {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_11 = {
-    { 1, 1, 1, 1 },
-    { 1, 1, 1, 1 },
-    { 1, 8, 8, 1 },
-    { 8, 8, 8, 8 } };
+    {12,12,12,12 },
+    {12,12,12,12 },
+    {12,12,12,12 },
+    {12,12,12,12 } };
   inputData.add(data_11);
   inputForm.add(form_11);
   
@@ -244,10 +249,10 @@ void setupPiecesPlan() {
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_12 = {
-    { 2, 0, 0, 2 },
-    { 6, 6, 6, 6 },
-    { 2, 0, 0, 2 },
-    { 2, 0, 0, 2 } };
+    {12,12,12,12 },
+    {12,12,12,12 },
+    {12,12,12,12 },
+    {12,12,12,12 } };
   inputData.add(data_12);
   inputForm.add(form_12);
   
@@ -258,8 +263,8 @@ void setupPiecesPlan() {
     { 0, 2, 0, 0 },
     { 0, 2, 0, 0 } };
   Integer[][] form_13 = {
-    { 0, 8, 8, 0 },
-    { 0, 8, 8, 0 },
+    { 8, 8, 8, 8 },
+    { 8, 8, 8, 8 },
     { 8, 8, 8, 8 },
     { 8, 8, 8, 8 } };
   inputData.add(data_13);
@@ -286,10 +291,10 @@ void setupPiecesPlan() {
     { 0, 6, 0, 0 },
     { 0, 0, 0, 0 } };
   Integer[][] form_15 = {
-    { 0, 5, 5, 5 },
-    { 0, 5, 5, 0 },
-    { 0, 5, 5, 0 },
-    { 0, 5, 5, 5  } };
+    { 5, 5, 5, 5 },
+    { 5, 5, 5, 5 },
+    { 5, 5, 5, 5 },
+    { 5, 5, 5, 5 }};
   inputData.add(data_15);
   inputForm.add(form_15);
 }

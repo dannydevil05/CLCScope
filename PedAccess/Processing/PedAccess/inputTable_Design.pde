@@ -13,6 +13,30 @@ String[] amenityNames = {
   "PED-X'ING"
 };
 
+// Form Codes:
+// 0 = void/no brick
+// 1 = tan brick
+// 2 = blue brick
+// 3 = red brick
+// 4 = black brick
+// 5 = green brick
+// 6 = white brick
+// 7 = brown brick
+// 8 = purple brick
+// 9 = cream brick
+//10 = lavender brick 
+//11 = light blue brick
+  
+  // Data Type
+  /* 0 = Vehicle Road Network
+   * 1 = Surface Level Pedestrian Pathways
+   * 2 = Surface Level Pedestrian Street Crossing
+   * 3 = Covered Linkway Redestrian Pathway
+   * 4 = Ground-Bridge-Ground Street Crossing
+   * 5 = 2nd Level Pedestrian Causeway
+   */
+   
+
 void setupPiecesDesign() {
   
   inputData = new ArrayList<Integer[][]>();

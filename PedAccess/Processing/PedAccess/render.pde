@@ -24,8 +24,9 @@ color whiteBrick = #FFFFFF;
 color brownBrick = #8B5F07;
 color purpleBrick= #AD0163;
 color creamBrick= #ffe299;
-color lavenderBrick= #CAA6CE;
-color lightblueBrick= #77FCFF;
+color lavenderBrick = #CAA6CE;
+color lightblueBrick = #77FCFF;
+color turquoiseBrick = #008080;
 color walmart_yellow = #ffc220;
 color walmart_light_green = #76c043;
 color walmart_dark_blue = #004c91;
@@ -449,6 +450,13 @@ void renderNetworkRaster(PGraphics graphic) {
               }
               
               input.rect(u*gridWidth + dU, v*gridHeight + dV, gridWidth, gridHeight);
+              if ((u%4==0) && (v%4==0) && (u>3) && (v>3)){
+                input.fill(textColor);
+                input.textSize(24);
+                input.textAlign(CENTER);
+                int id = tablePieceInput[(u-4)/4][(v-4)/4][0];
+                if (id>=0 && id<14) input.text(density[id],(u-2)*gridWidth,(v-1)*gridWidth);
+              }
             }
 
           }
@@ -461,27 +469,41 @@ void renderNetworkRaster(PGraphics graphic) {
       if (ID == 0) {
         input.noFill();
       } else if (ID == 1) {
+        input.stroke(tanBrick);
         input.fill(tanBrick);
       } else if (ID == 2) {
+        input.stroke(blueBrick);
         input.fill(blueBrick);
       } else if (ID == 3) {
+        input.stroke(redBrick);
         input.fill(redBrick);
       } else if (ID == 4) {
+        input.stroke(blackBrick);
         input.fill(blackBrick);
       } else if (ID == 5) {
+        input.stroke(greenBrick);
         input.fill(greenBrick);
       } else if (ID == 6) {
+        input.stroke(whiteBrick);
         input.fill(whiteBrick);
       } else if (ID == 7) {
+        input.stroke(brownBrick);
         input.fill(brownBrick);
       } else if (ID == 8){
+        input.stroke(purpleBrick);
         input.fill(purpleBrick);
       } else if (ID == 9){
+        input.stroke(creamBrick);
         input.fill(creamBrick);
       } else if (ID == 10){
+        input.stroke(lavenderBrick);
         input.fill(lavenderBrick);
       } else if (ID == 11){
+        input.stroke(lightblueBrick);
         input.fill(lightblueBrick);
+      } else if (ID == 12){
+        input.stroke(turquoiseBrick);
+        input.fill(turquoiseBrick);
       }
     }
     
@@ -510,6 +532,8 @@ void renderNetworkRaster(PGraphics graphic) {
         fill(lavenderBrick);
       } else if (ID == 11){
         fill(lightblueBrick);
+      } else if (ID == 12){
+        fill(turquoiseBrick);
       }
      
     }

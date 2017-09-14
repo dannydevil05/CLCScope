@@ -92,6 +92,7 @@ boolean sketchFullScreen() {
 
 //Walmart Logo
 PImage wmt_logo;
+PImage compass_logo;
 
 // Class that holds a button menu
 Menu mainMenu, hideMenu;
@@ -166,6 +167,9 @@ void setup() {
 
   //Load Walmart "Spark" Logo
   wmt_logo = loadImage("Walmart_Spark.png");
+  
+  //Load Compass Image
+  compass_logo = loadImage("compass.png");
   
   //init bar charts
   color lightgreen=#bcff00; 
@@ -247,7 +251,7 @@ void draw() {
   textSize(24);
   text("CityTIM", 20, STANDARD_MARGIN + 16);
   textSize(16);
-  text("Ira Winder, MIT Media Lab", width-440, height - 60);
+  text("Ira Winder", width-440, height - 60);
   text("Yimin Zhou, Centre for Liveable Cities", width-440, height - 30);
   textSize(12);
 
@@ -338,7 +342,9 @@ void drawLegends() {
   translate(10, 30);
   int gridSpace = 8; // screen pixels
   Integer[][] currentForm;
+  ///////////////////Planning Mode/////////////////////
   if (planningMode){
+    //noStroke();
     for (int i=0; i<inputForm.size(); i++) {
       currentForm = inputForm.get(i);
       for (int u=0; u<currentForm.length; u++) {
@@ -346,10 +352,16 @@ void drawLegends() {
           fill(#666666);
           if (currentForm[u][v] > 0) findFormFill(currentForm[u][v]);
           if (i != 14) {
+            if ((u==1 || u==2) && (v==1 || v==2)) noStroke(); 
+            else stroke(textColor);
             if (i < 14) {rect(v*gridSpace, (i*5+u)*gridSpace, gridSpace, gridSpace);
             //else if (i < 11) rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace); //to skip drawing of certain "empty" typology
             //else rect(v*gridSpace, ((i-2)*5+u)*gridSpace, gridSpace, gridSpace); 
-            //text("L",v*gridSpace,(i*5+u)*gridSpace); FOR YUTING ADD LETTERS
+              if (u==3 && v==1) {
+                textSize(18);
+                fill(textColor);
+                text(density[i],v*gridSpace,(i*5+u)*gridSpace);
+              }  
             }
             else rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
           }
@@ -357,12 +369,15 @@ void drawLegends() {
       }
     }
     for (int i=0; i<pieceNames.length; i++) {
+      textSize(14);
       fill(textColor);
       for (int j=0; j<3; j++) text(pieceNames[i], 4*gridSpace + 3*gridSpace, (i*5)*gridSpace + 10);
       drawIcon(4*gridSpace + gridSpace, (i*5)*gridSpace, i, gridSpace, -1);
     }
   }
-  if (!planningMode){
+  
+  /////////////////Design Mode////////////////////
+  else if (!planningMode){
     for (int i=0; i<14; i++) {
       currentForm = inputForm.get(i);
       for (int u=0; u<currentForm.length; u++) {
@@ -383,6 +398,7 @@ void drawLegends() {
       drawIcon(4*gridSpace + gridSpace, (i*5)*gridSpace, i, gridSpace, -1);
     }
   }
+  
   textSize(12);
   popMatrix();
 }
@@ -767,16 +783,24 @@ void drawDock() {
     drawIcon(int(x + 0.75*pieceW), int(y + 0.5*pieceH - 10), amenityFilter, 12, amenityFilter);
   }
   // Draw Mode Dock
-  fill(#CCCCCC);
+  /*fill(#CCCCCC);
   stroke(textColor);
   rect(6.25*pieceW, 0.25*pieceH, 2.5*pieceW, 2.5*pieceH);
   fill(0);
   stroke(textColor);
   rect(6.75*pieceW, 0.75*pieceH, 1.5*pieceW, 1.5*pieceH);
-  fill(textColor);
+  fill(textColor);*/
+  pushMatrix();
+  //imageMode(CENTER);
+  rotate(0.767945);
+  
+  translate (6.75*pieceW*0.719+0.75*pieceH*0.695, -6.75*pieceW*0.695-0.75*pieceH*0.719);
+  image(compass_logo,0,0, 2.5*pieceW, 2.5*pieceH);
+  //translate (6.75*pieceW*0.719, -6.75*pieceW*0.694);
+  popMatrix();
   
   // Draw Mode Dock Info
-  x = - 1.5*pieceW;
+  /*x = - 1.5*pieceW;
   y = pieceH;
   if (!planningMode) {
     fill(textColor);
@@ -791,7 +815,7 @@ void drawDock() {
   if (planningMode) mode="PlANNING";
   else mode="DESIGN";
   for (int i=0; i<3; i++) text(mode, x + 6.5*pieceW, y + 0.5*pieceH);
-  textAlign(LEFT);
+  textAlign(LEFT);*/
 
   // Draw Age Dock Border
   fill(#CCCCCC);

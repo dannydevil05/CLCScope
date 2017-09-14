@@ -101,7 +101,7 @@ void renderBufferLayer(PGraphics a){
     // Rules:
     // distance(B1,Residential)>100m
     if (existingBuffer==0 ){
-      if (building>2 && building<16 && building!=13) return true;
+      if (building>2 && building<15 && building!=13) return true;
       else return false;
     }
     else return false;

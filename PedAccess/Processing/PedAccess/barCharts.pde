@@ -116,11 +116,11 @@ void drawQuantumBar(){
       barLabel="COM";
       break;
     case 2:
-      fill(purpleBrick);
+      fill(lavenderBrick);
       barLabel="B1";
       break;
     case 3:
-      fill(lavenderBrick);
+      fill(purpleBrick);
       barLabel="B2";
       break;
     case 4:
