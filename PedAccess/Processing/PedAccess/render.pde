@@ -438,7 +438,7 @@ void renderNetworkRaster(PGraphics graphic) {
 //              }
 //            }
 
-            if (true) {
+            if (true) { //show input form=true
               findFormFill(input, form[u+gridPanU][v+gridPanV]);
               
               float dU = 0;
@@ -450,12 +450,14 @@ void renderNetworkRaster(PGraphics graphic) {
               }
               
               input.rect(u*gridWidth + dU, v*gridHeight + dV, gridWidth, gridHeight);
+              
+              //draw density of buildings
               if ((u%4==0) && (v%4==0) && (u>3) && (v>3)){
                 input.fill(textColor);
                 input.textSize(24);
-                input.textAlign(CENTER);
-                int id = tablePieceInput[(u-4)/4][(v-4)/4][0];
-                if (id>=0 && id<14) input.text(density[id],(u-2)*gridWidth,(v-1)*gridWidth);
+                input.textAlign(CENTER);              
+                input.text(densityInput[(u-4)/4][(v-4)/4],(u-2)*gridWidth,(v-1)*gridWidth);
+                
               }
             }
 

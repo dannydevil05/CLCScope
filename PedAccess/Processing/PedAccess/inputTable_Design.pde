@@ -26,6 +26,7 @@ String[] amenityNames = {
 // 9 = cream brick
 //10 = lavender brick 
 //11 = light blue brick
+//12 = turquoise brick
   
   // Data Type
   /* 0 = Vehicle Road Network
@@ -41,6 +42,7 @@ void setupPiecesDesign() {
   
   inputData = new ArrayList<Integer[][]>();
   inputForm = new ArrayList<Integer[][]>();
+
 
   // 0: School
   Integer[][] data_0 = {

@@ -69,14 +69,14 @@ void drawBarCharts(){
   //Draw employment population
   translate(-barWidth*0.8, 0);
   employmentChart.initBar();
-  employmentChart.setVar (b1POP+comPOP+b2POP,5000);
+  employmentChart.setVar (b1POP+comPOP+b2POP,8000);
   employmentChart.drawThisChart();
      
     
  //Draw Residential Population
   translate(-barWidth*2.0/3.0, 0);
   residentChart.initBar();
-  residentChart.setVar(resPOP,5000);
+  residentChart.setVar(resPOP,8000);
   residentChart.drawThisChart();
 
     

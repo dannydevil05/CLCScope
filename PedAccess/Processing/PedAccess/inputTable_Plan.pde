@@ -1,4 +1,5 @@
 // Arrays that holds ID information of rectilinear tile arrangement.
+String densityInput[][]= new String[displayU/4][displayV/4];
 int tablePieceInput[][][] = new int[displayU/4][displayV/4][2];
 int rotationMod = 1;
 
@@ -52,7 +53,7 @@ String[] pieceNames = {
   
 };
 
-String[] density= {
+String[] typologyDensity= {
   "L",
   "M",
   "L",
@@ -300,7 +301,9 @@ void setupPiecesPlan() {
 }
 
 void decodePieces() {
-  if (planningMode) clearInputFormData();
+  
+  if (planningMode)  clearInputFormData();
+  if (planningMode)   clearInputDensityData();
   clearInputJSONData();
   //renderBufferMap(buffer);
   for (int i=0; i<tablePieceInput.length; i++) {
@@ -313,9 +316,16 @@ void decodePieces() {
         int X =0;
         int Y =0;
         
+       // Update Density Map
+       String density;
+       if (planningMode){
+         if (ID<=IDMax-2) density = typologyDensity[ID];
+         else density ="";
+         densityInput[i][j] =density;
+       }
+        
         // Update "Form" Layer
         Integer[][] form = inputForm.get(ID);
-        Integer[][] planningForm=inputForm.get(ID);
         for (int u=0; u<form.length; u++) {
           for (int v=0; v<form[0].length; v++) {
             
@@ -598,6 +608,18 @@ void clearInputFormData() {
   //newPOIs = new JSONArray();
   //newNodes = new JSONArray();
 }
+
+void clearInputDensityData() {
+  for (int u=0; u<displayU/4; u++) {
+    for (int v=0; v<displayV/4; v++) {
+      densityInput[u][v]="";
+
+    }
+  }
+  //newPOIs = new JSONArray();
+  //newNodes = new JSONArray();
+}
+
 
 void clearInputJSONData(){
   newPOIs = new JSONArray();

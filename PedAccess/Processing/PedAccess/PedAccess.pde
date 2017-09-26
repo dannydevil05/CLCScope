@@ -251,10 +251,24 @@ void draw() {
   textSize(24);
   text("CityTIM", 20, STANDARD_MARGIN + 16);
   textSize(16);
-  text("Ira Winder", width-440, height - 60);
-  text("Yimin Zhou, Centre for Liveable Cities", width-440, height - 30);
+  //text("Ira Winder", width-440, height - 60);
+ // text("Yimin Zhou, Centre for Liveable Cities", width-440, height - 30);
+ text("Urban Analytics Lab", width-440, height-60);
+ text("Centre for Liveable Cities, Singapore", width-440, height-35);
   textSize(12);
-
+    text("PLANNING/DESIGN MODE SWITCH", 20, STANDARD_MARGIN + 60);
+    text("Press shift + j", 20, STANDARD_MARGIN + 80);
+    text("Agents", 20, STANDARD_MARGIN + 110);
+    text("Press shift + s", 20, STANDARD_MARGIN + 130);
+    text("Buffer", 20, STANDARD_MARGIN + 160);
+    text("Press j", 20, STANDARD_MARGIN + 180);
+    text("Heat Map", 20, STANDARD_MARGIN + 210);
+    text("Press shift + s", 20, STANDARD_MARGIN + 230);   
+    text("Pedestrian Paths", 20, STANDARD_MARGIN + 260);
+    text("Press shift + p", 20, STANDARD_MARGIN + 280);
+    text("Screenshot", 20, STANDARD_MARGIN + 310);
+    text("Press p", 20, STANDARD_MARGIN + 330);
+    
   //  // Renders everything else drawn to Screen
   //  renderScreen();
   //  image(screen, 0, 0);
@@ -360,7 +374,7 @@ void drawLegends() {
               if (u==3 && v==1) {
                 textSize(18);
                 fill(textColor);
-                text(density[i],v*gridSpace,(i*5+u)*gridSpace);
+                text(typologyDensity[i],v*gridSpace,(i*5+u)*gridSpace);
               }  
             }
             else rect(v*gridSpace, ((i-1)*5+u)*gridSpace, gridSpace, gridSpace);
@@ -767,7 +781,7 @@ void drawDock() {
   x = 3.0*pieceW;
   y = 1.1*pieceH;
   textAlign(CENTER);
-  for (int i=0; i<3; i++) text("DOCK", x + 0.5*pieceW, y + 0.5*pieceH);
+  for (int i=0; i<3; i++) text("FILTER", x + 0.5*pieceW, y + 0.5*pieceH);
   textAlign(LEFT);
 
   // draw dockInfo
