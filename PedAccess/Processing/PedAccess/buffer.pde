@@ -1,4 +1,5 @@
 PGraphics buffer;
+PGraphics bufferClash;
 
 boolean showBuffer=true;
 boolean hasConflict[][]= new boolean[18][22];
@@ -9,13 +10,16 @@ int bufferMap[][]=new int[18][22];
 
 void initBuffer(){
   buffer= createGraphics(table.width, table.height);
+  bufferClash= createGraphics(table.width, table.height);
 }
 
-void renderBufferLayer(PGraphics a){
+void renderBufferLayer(PGraphics a, PGraphics b){
   float unitDist=20.0/gridWidth;
   boolean textClash=false;
   a.beginDraw();
+  b.beginDraw();
   a.clear();
+  b.clear();
   initBufferMatrices();
   computeGridBuffer();
   for (int i=0; i<tablePieceInput.length; i++) {
@@ -35,8 +39,8 @@ void renderBufferLayer(PGraphics a){
       if (bufferMap[i][j] == 0 ) {
         //a.fill(0,0,200,70);
         //a.stroke(0,0,200);
-        a.noFill();
-        a.noStroke();
+        b.noFill();
+        b.noStroke();
         int passedMillis=millis()-time;
         int offDuration=500;
         int onDuration=500;
@@ -45,26 +49,27 @@ void renderBufferLayer(PGraphics a){
           //Box turns on for 0.5s
           //and off for 0.5s
           textClash=true;
-          a.fill(200,0,0);
-          a.stroke(200,0,0);
+          b.fill(200,0,0);
+          b.stroke(200,0,0);
           if (passedMillis >= (offDuration+onDuration)) time = millis();
         }
       }      
       else {
-        a.noFill();
-        a.noStroke();
+        b.noFill();
+        b.noStroke();
       }
-      a.rectMode(CORNER);
-      a.rect(4*i*gridWidth,4*j*gridHeight,4*gridWidth,4*gridHeight);
+      b.rectMode(CORNER);
+      b.rect(4*i*gridWidth,4*j*gridHeight,4*gridWidth,4*gridHeight);
        if (textClash){
-        a.fill(255,255,255);
-        a.textAlign(CENTER);
-        a.text("CLASH",4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight);
+        b.fill(255,255,255);
+        b.textAlign(CENTER);
+        b.text("CLASH",4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight);
         textClash=false;
        }
     }
   }
   a.endDraw();
+  b.endDraw();
 }
 
 
@@ -98,8 +103,7 @@ void renderBufferLayer(PGraphics a){
   
  
   boolean checkIfConflict(int building, int existingBuffer){
-    // Rules:
-    // distance(B1,Residential)>100m
+    //typology compatability tools
     if (existingBuffer==0 ){
       if (building>2 && building<15 && building!=13) return true;
       else return false;

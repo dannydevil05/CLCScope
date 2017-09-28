@@ -232,7 +232,7 @@ void draw() {
     changeDetected = false;
   }
   renderDynamicTableLayers(input);
-  if (planningMode) renderBufferLayer(buffer);
+  if (planningMode) renderBufferLayer(buffer, bufferClash);
 
 
   if (outputReady) {

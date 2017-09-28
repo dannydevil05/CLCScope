@@ -88,16 +88,16 @@ void renderTable() {
     table.image(output, 0, 0);
   }
   
-    //if (showBuffer) {
- // table.image(buffer,0,0);
- // }
+    if (showBuffer) {
+  table.image(buffer,0,0);
+  }
 
   if (showInputData) {
     table.image(input, 0, 0);
   }
   // Draws Buffer map
   if (showBuffer) {
-  table.image(buffer,0,0);
+  table.image(bufferClash,0,0);
 }
   // Draws lines
   table.image(l, 0, 0);
@@ -145,7 +145,7 @@ void reRender() {
   renderOutputTableLayers(output);
   
   // Render Buffer Layer
-  renderBufferLayer(buffer);
+  renderBufferLayer(buffer, bufferClash);
   
   // reRender Minimap
   reRenderMiniMap(miniMap);
