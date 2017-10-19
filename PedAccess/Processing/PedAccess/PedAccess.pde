@@ -58,9 +58,6 @@ boolean implementMenu = true;
 boolean implementAgents = true;
 
 // Set this to true to display the main menu upon start
-boolean drawBuffer=false;
-
-
 boolean showMainMenu = true;
 boolean showFrameRate = false;
 
@@ -253,21 +250,7 @@ void draw() {
   textSize(16);
   //text("Ira Winder", width-440, height - 60);
  // text("Yimin Zhou, Centre for Liveable Cities", width-440, height - 30);
- text("Urban Analytics Lab", width-440, height-60);
- text("Centre for Liveable Cities, Singapore", width-440, height-35);
-  textSize(12);
-    text("PLANNING/DESIGN MODE SWITCH", 20, STANDARD_MARGIN + 60);
-    text("Press shift + j", 20, STANDARD_MARGIN + 80);
-    text("Agents", 20, STANDARD_MARGIN + 110);
-    text("Press shift + s", 20, STANDARD_MARGIN + 130);
-    text("Buffer", 20, STANDARD_MARGIN + 160);
-    text("Press j", 20, STANDARD_MARGIN + 180);
-    text("Heat Map", 20, STANDARD_MARGIN + 210);
-    text("Press shift + s", 20, STANDARD_MARGIN + 230);   
-    text("Pedestrian Paths", 20, STANDARD_MARGIN + 260);
-    text("Press shift + p", 20, STANDARD_MARGIN + 280);
-    text("Screenshot", 20, STANDARD_MARGIN + 310);
-    text("Press p", 20, STANDARD_MARGIN + 330);
+
     
   //  // Renders everything else drawn to Screen
   //  renderScreen();
@@ -304,6 +287,7 @@ void draw() {
       drawDesignPanel();
       drawPOIs();
     }
+    drawInstructions();
     drawLegends();
     if (planningMode){
       drawPlanPanel();
@@ -661,13 +645,7 @@ void drawIcon(int x, int y, int type, int dim, int filter) {
   case 0: // School
     fill(tanBrick);
     stroke(textColor);
-    rect(x, y, dim, dim);
-    if (drawBuffer==true) {
-      fill(0, 100, 0, 250);
-      rectMode(CENTER);
-      rect(x, y, 50, 50);
-      rectMode(CORNER);
-    }    
+    rect(x, y, dim, dim);  
     break;
   case 1: // Childcare
     fill(greenBrick);
@@ -921,6 +899,67 @@ void updateDock() {
   amenityFilter = -1;
   if (tablePieceInput[1][20][0]>=0 && tablePieceInput[1][20][0]<=13 ) amenityFilter = tablePieceInput[1][20][0];
   if (tablePieceInput[1][20][0] ==15) amenityFilter = 14;
+}
+
+void drawInstructions(){
+  textSize(16);
+  text("Urban Analytics Lab", width-440, height-60);
+  text("Centre for Liveable Cities, Singapore", width-440, height-35);
+  pushMatrix();
+  translate(0,3*TABLE_IMAGE_HEIGHT/22.0);
+  fill(textColor);
+  text("INSTRUCTIONS",20 , STANDARD_MARGIN);
+  textSize(12);
+  text("PLANNING/DESIGN", 20, STANDARD_MARGIN + 60);
+  text("Press shift + j", 20, STANDARD_MARGIN + 80);
+  text("Agents", 20, STANDARD_MARGIN + 110);
+  text("Press shift + s", 20, STANDARD_MARGIN + 130);
+  text("Buffer", 20, STANDARD_MARGIN + 160);
+  text("Press j", 20, STANDARD_MARGIN + 180);
+  text("Heat Map", 20, STANDARD_MARGIN + 210);
+  text("Press w", 20, STANDARD_MARGIN + 230);   
+  text("Pedestrian Paths", 20, STANDARD_MARGIN + 260);
+  text("Press shift + p", 20, STANDARD_MARGIN + 280);
+  text("Screenshot", 20, STANDARD_MARGIN + 310);
+  text("Press p", 20, STANDARD_MARGIN + 330);
+  
+  //draw the on-off indicator
+  float indRad=10;
+  if (planningMode) {
+    stroke(#FFFFFF);
+    fill(greenBrick);
+  }
+  else fill(redBrick);
+  ellipse(150  ,STANDARD_MARGIN + 60 - indRad/2,indRad,indRad);
+  
+  if (showSwarm) {
+    stroke(#FFFFFF);
+    fill(greenBrick);
+  }
+  else fill(redBrick);
+  ellipse(150  ,STANDARD_MARGIN + 110 - indRad/2,indRad,indRad);
+  
+  if (showBuffer) {
+    stroke(#FFFFFF);
+    fill(greenBrick);
+  }
+  else fill(redBrick);
+  ellipse(150  ,STANDARD_MARGIN + 160 - indRad/2,indRad,indRad);
+  
+  if (showWalkAccess) {
+    stroke(#FFFFFF);
+    fill(greenBrick);
+  }
+  else fill(redBrick);
+  ellipse(150  ,STANDARD_MARGIN + 210 - indRad/2,indRad,indRad);
+  
+  if (showPaths) {
+    stroke(#FFFFFF);
+    fill(greenBrick);
+  }
+  else fill(redBrick);
+  ellipse(150  ,STANDARD_MARGIN + 260 - indRad/2,indRad,indRad);
+  popMatrix();
 }
 
 

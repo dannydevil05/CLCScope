@@ -385,7 +385,7 @@ void keyPressed() {
         showFrameRate = toggle(showFrameRate);
         break;
       case 'S': //toggles display of swarms of agents
-        showSwarm = toggle(showSwarm);
+        if (!planningMode) showSwarm = toggle(showSwarm);
         break;
       case 'e': //shows network edges of motion
         showEdges = toggle(showEdges);
@@ -456,7 +456,7 @@ void keyPressed() {
         pFinderGrid_Viz(tableCanvas);
         break;
       case 'P': //toggle display of shortest paths
-        showPaths = toggle(showPaths);
+        if (!planningMode) showPaths = toggle(showPaths);
         break;
       case 'G': //toggle display for pathing grip
         showGrid = toggle(showGrid);
@@ -733,7 +733,7 @@ void keyPressed() {
           break;
           
         case 'w': // toggle heatmap
-          showWalkAccess = toggle(showWalkAccess);
+          if (!planningMode) showWalkAccess = toggle(showWalkAccess);
           break;
           
         case 'k': // toggle dock

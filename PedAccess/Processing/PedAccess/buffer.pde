@@ -1,5 +1,5 @@
-PGraphics buffer;
-PGraphics bufferClash;
+PGraphics buffer, bufferClash;
+PShape bufferShape;
 
 boolean showBuffer=true;
 boolean hasConflict[][]= new boolean[18][22];
@@ -9,30 +9,50 @@ int bufferMap[][]=new int[18][22];
 
 
 void initBuffer(){
-  buffer= createGraphics(table.width, table.height);
-  bufferClash= createGraphics(table.width, table.height);
+  float unitDist=20.0/gridWidth;
+  buffer = createGraphics(table.width, table.height);
+  bufferClash = createGraphics(table.width, table.height);
+  //bufferShape = createShape(RECT,(4*10+2)*gridWidth,(4*10+2)*gridHeight,(bufferRadius+40)/unitDist,(bufferRadius+40)/unitDist);
+  //bufferShape.setFill(color(0,0,255));
 }
 
-void renderBufferLayer(PGraphics a, PGraphics b){
+void renderBufferLayer(PGraphics a, PGraphics b){ //a=buffer layer, b=flashing overlap layer
   float unitDist=20.0/gridWidth;
   boolean textClash=false;
+  bufferShape = createShape(RECT,0,0,2*(bufferRadius+40)/unitDist,2*(bufferRadius+40)/unitDist);
+  bufferShape.setFill(color(0,0,255,100));
+  bufferShape.setStroke(color(0,0,150));
+  
   a.beginDraw();
   b.beginDraw();
-  a.clear();
+  a.clear(); 
   b.clear();
+  
+  //a.background(255,0,0);
+  //Initialize and compute the buffer matrices
   initBufferMatrices();
   computeGridBuffer();
+  
+  //a.blendMode(DARKEST);
+  //Drawing the buffer
   for (int i=0; i<tablePieceInput.length; i++) {
     for (int j=0; j<tablePieceInput[0].length; j++) {
       int ID = tablePieceInput[i][j][0];
       if (ID ==0 || ID==1 || ID==2 || ID==13) {
         a.stroke(0,0,150);
         a.fill(0,0,255,70);
-        a.rectMode(RADIUS);
-        a.rect((4*i+2)*gridWidth,(4*j+2)*gridHeight,(bufferRadius+40)/unitDist,(bufferRadius+40)/unitDist);
+        //a.rectMode(RADIUS);
+        //a.rect((4*i+2)*gridWidth,(4*j+2)*gridHeight,(bufferRadius+40)/unitDist,(bufferRadius+40)/unitDist);
+        a.shapeMode(CENTER);
+        a.shape(bufferShape,(4*i+2)*gridWidth,(4*j+2)*gridHeight);
       }
     }
   }
+  a.loadPixels();
+  for (int i=0;i<a.width*a.height;i++){
+    if (a.pixels[i]!=0)a.pixels[i]=color(0,0,255,70);
+  }
+  a.updatePixels();
   for (int i=0; i<bufferMap.length; i++) {
     for (int j=0; j<bufferMap[0].length; j++) {
       hasConflict[i][j]=checkIfConflict(tablePieceInput[i][j][0], bufferMap[i][j]);
@@ -59,13 +79,13 @@ void renderBufferLayer(PGraphics a, PGraphics b){
         b.noStroke();
       }
       b.rectMode(CORNER);
-      b.rect(4*i*gridWidth,4*j*gridHeight,4*gridWidth,4*gridHeight);
-       if (textClash){
+      b.rect(4*i*gridWidth,4*j*gridHeight,4*gridWidth,4*gridHeight+1); //+1 for red rectangle doesnt completely cover the building shape
+     if (textClash){
         b.fill(255,255,255);
         b.textAlign(CENTER);
         b.text("CLASH",4*i*gridWidth+2*gridWidth,4*j*gridHeight+2*gridHeight);
         textClash=false;
-       }
+     }
     }
   }
   a.endDraw();
