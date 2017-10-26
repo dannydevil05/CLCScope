@@ -788,7 +788,7 @@ void renderNetworkRaster(PGraphics graphic) {
       i.fill(textColor);
       i.textAlign(RIGHT);
       i.text("Pixelizer v1.0", screen.width - 10, screen.height - STANDARD_MARGIN - 15);
-      i.text("Ira Winder, jiw@mit.edu", screen.width - 10, screen.height - STANDARD_MARGIN);
+      i.text("Danny Soo, Intern :D", screen.width - 10, screen.height - STANDARD_MARGIN);
       i.fill(textColor);
 
 

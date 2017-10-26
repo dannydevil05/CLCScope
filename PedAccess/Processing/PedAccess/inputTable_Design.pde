@@ -270,9 +270,10 @@ void setupPiecesDesign() {
 }
 
 void changeMode(){ 
-  planningMode=toggle(planningMode);
-  showForm=toggle(showForm); //default=on in planning mode
-  showBuffer=toggle(showBuffer); //default=on in planning mode
-  showPaths=toggle(showPaths); //default=off in planning mode
-  showSwarm=toggle(showSwarm); //default=off in planning mode
+  planningMode = toggle(planningMode);
+  showForm = toggle(showForm); //default=on in planning mode
+  showBuffer = toggle(showBuffer); //default=on in planning mode
+  showPaths = toggle(showPaths); //default=off in planning mode
+  showSwarm = toggle(showSwarm); //default=off in planning mode
+  showWalkAccess = toggle(showWalkAccess);//default=off in planning mode
 }

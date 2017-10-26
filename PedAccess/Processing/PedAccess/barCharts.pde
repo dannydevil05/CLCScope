@@ -135,7 +135,6 @@ void drawQuantumBar(){
       
       textSize(20);
       fill(textColor);
-      //text(int(1000*ratio)/10.0 + "%",barWidth/2, 100+i*70);
   
       text(int(1000*ratio)/10.0 + "%",barWidth/2, ycounter+7+ratio*chartHeight/2);
       textSize(16);

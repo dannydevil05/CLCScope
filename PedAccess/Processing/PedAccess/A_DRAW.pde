@@ -214,7 +214,7 @@ void loading(PGraphics p, String item) {
   p.textSize(12);
   p.text("Loading " + item + "...", x, y);
   if (showName) {
-    p.text("Ira Winder, MIT Media Lab", x, y + 20);
+    p.text("Danny Soo, The Intern :D", x, y + 20);
   }
   
   p.endDraw();
